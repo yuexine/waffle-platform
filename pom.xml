@@ -22,6 +22,7 @@
     <modules>
         <module>waffle-common</module>
         <module>waffle-component</module>
+        <module>waffle-sso</module>
     </modules>
 
     <properties>

@@ -1,0 +1,11 @@
+eureka:
+  instance:
+    appname: sso
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+server:
+  port: 8081
+spring:
+  application:
+    name: sso
