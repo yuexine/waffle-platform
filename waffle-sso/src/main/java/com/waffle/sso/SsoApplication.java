@@ -1,5 +1,6 @@
 package com.waffle.sso;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,9 +17,12 @@ public class SsoApplication {
         SpringApplication.run(SsoApplication.class, args);
     }
 
-    @GetMapping
+    @Value("${foo}")
+    private String foo;
+
+    @GetMapping("/")
     public String home() {
-        return "Hello, I am SSO Application";
+        return "Hello, I am SSO Application" + foo;
     }
 
 }

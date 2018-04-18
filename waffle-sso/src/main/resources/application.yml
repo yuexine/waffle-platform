@@ -9,3 +9,5 @@ server:
 spring:
   application:
     name: sso
+  profiles:
+    active: dev

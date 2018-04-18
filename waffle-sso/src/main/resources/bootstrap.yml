@@ -1,4 +1,7 @@
 spring:
   cloud:
     config:
-      uri:
+      uri: http://localhost:8888
+      name: sso
+      profile: dev
+      label: master
