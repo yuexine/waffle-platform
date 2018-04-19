@@ -1,0 +1,5 @@
+spring:
+  kafka:
+    bootstrap-servers: 192.168.14.15:9092
+    consumer:
+      group-id: test-consumer-group

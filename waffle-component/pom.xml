@@ -15,6 +15,7 @@
     <modules>
         <module>waffle-component-utils</module>
         <module>waffle-component-redis</module>
+        <module>waffle-component-kafka</module>
     </modules>
 
 

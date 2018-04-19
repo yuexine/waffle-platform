@@ -11,3 +11,19 @@ spring:
     name: sso
   profiles:
     active: dev
+#  kafka:
+#    bootstrap-servers: 127.0.0.1:9092
+#    consumer:
+#      group-id: test-consumer-group
+#      auto-offset-reset: earliest
+#      enable-auto-commit: true
+#      auto-commit-interval: 100
+##      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#      value-deserializer: org.springframework.kafka.support.serializer.JsonDeSerializer
+#    producer:
+##      key-serializer: org.apache.kafka.common.serialization.StringDeserializer
+#      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+#      batch-size: 16384
+#      buffer-memory: 33554432
+#      retries: 0
+
