@@ -13,14 +13,13 @@ public class KafkaSender {
 
     private KafkaTemplate<String, KafkaMessage> kafkaTemplate;
 
-
     @Autowired
     public void setKafkaTemplate(KafkaTemplate<String, KafkaMessage> kafkaTemplate) {
         this.kafkaTemplate = kafkaTemplate;
     }
 
     public void send(String topic, KafkaMessage kafkaMessage) {
-//        log.debug("send kafkaMessage to kafka, kafkaMessage is = {}", kafkaMessage);
+        log.debug("send message to kafka, message is = {}", kafkaMessage);
         kafkaTemplate.send(topic, kafkaMessage);
     }
 }
