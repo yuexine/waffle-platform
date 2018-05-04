@@ -1,5 +1,7 @@
 package com.waffle.sso;
 
+import com.waffle.component.hbase.config.HBaseAutoConfiguration;
+import com.waffle.component.hbase.config.HBaseProperties;
 import com.waffle.component.kafka.config.KafkaConfiguration;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
@@ -13,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @SpringBootApplication
-@Import(value = KafkaConfiguration.class)
+@Import(value = {KafkaConfiguration.class, HBaseProperties.class, HBaseAutoConfiguration.class})
 public class SsoApplication {
 
     public static void main(String[] args) {
