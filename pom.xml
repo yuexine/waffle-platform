@@ -23,6 +23,7 @@
         <module>waffle-common</module>
         <module>waffle-component</module>
         <module>waffle-sso</module>
+        <module>waffle-blog</module>
     </modules>
 
     <properties>
