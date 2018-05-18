@@ -11,6 +11,10 @@ spring:
     name: sso
   profiles:
     active: dev
+waffle:
+  component:
+    hbase:
+      zookeeperQuorum: 127.0.0.1
 #  kafka:
 #    bootstrap-servers: 127.0.0.1:9092
 #    consumer:

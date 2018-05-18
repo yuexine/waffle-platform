@@ -8,7 +8,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties(prefix = "waffle.component.hbase")
 public class HBaseProperties {
 
-    private String zookeeperQuorum = "hdfs://localhost:9000/hbase";
+    private String zookeeperQuorum;
 
     private Integer clientScannerTimeoutPeriod = 50000;
 

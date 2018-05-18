@@ -1,6 +1,5 @@
 package com.waffle.sso.web;
 
-import com.waffle.component.hbase.beans.HBaseTemplate;
 import com.waffle.component.kafka.consumer.KafkaSender;
 import com.waffle.sso.models.LogMessage;
 import com.waffle.sso.models.OtherMessage;
@@ -17,9 +16,6 @@ public class KafkaResource {
 
     @Autowired
     private KafkaSender kafkaSender;
-
-    @Autowired
-    private HBaseTemplate hBaseTemplate;
 
     @GetMapping("/m/{message}")
     public String sendMessage(@PathVariable String message) {
