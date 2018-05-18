@@ -42,7 +42,7 @@ public class KafkaResource {
 
     @GetMapping("/p/{message}")
     public String put(@PathVariable String message) {
-        hBaseTemplate.put("testtb2", "testrow1", "fam1", "qua1", message.getBytes());
+//        hBaseTemplate.put("testtb2", "testrow1", "fam1", "qua1", message.getBytes());
         return message;
     }
 }
