@@ -10,9 +10,6 @@ import org.apache.hadoop.hbase.filter.Filter;
 import org.apache.hadoop.hbase.filter.RegexStringComparator;
 import org.apache.hadoop.hbase.filter.ValueFilter;
 import org.apache.hadoop.hbase.util.Bytes;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
 
 import java.io.IOException;
 import java.util.Iterator;
@@ -29,7 +26,7 @@ public class HBaseOperaterTest {
 
     private Connection connection;
 
-    @Before
+    //    @Before
     public void init() throws IOException {
         Configuration configuration = new Configuration();
         connection = ConnectionFactory.createConnection(configuration);
@@ -39,13 +36,13 @@ public class HBaseOperaterTest {
     }
 
 
-    @After
+    //    @After
     public void destroy() throws IOException {
         table.close();
         connection.close();
     }
 
-    @Test
+    //    @Test
     public void testGet() throws IOException {
         Get get = new Get(Bytes.toBytes("ii"));
         Result result = table.get(get);
@@ -55,7 +52,7 @@ public class HBaseOperaterTest {
         }
     }
 
-    @Test
+    //    @Test
     public void operate() throws IOException {
         for (int i = 0; i < 100; i++) {
             Put p = new Put(Bytes.toBytes("foo_" + i));
@@ -67,13 +64,13 @@ public class HBaseOperaterTest {
 
     }
 
-    @Test
+    //    @Test
     public void testDelete() throws IOException {
         Delete d = new Delete("foo".getBytes());
         table.delete(d);
     }
 
-    @Test
+    //    @Test
     public void testScan() throws IOException {
         Scan scan = new Scan("foo_2".getBytes(), "foo_3".getBytes());
         Filter filter = new ValueFilter(CompareFilter.CompareOp.EQUAL, new RegexStringComparator("roys_26"));
@@ -87,7 +84,7 @@ public class HBaseOperaterTest {
         }
     }
 
-    @Test
+    //    @Test
     public void testIncrement() throws IOException {
         long c = table.incrementColumnValue("ii".getBytes(), "info".getBytes(), "name".getBytes(), 1L);
         System.out.println(c);
