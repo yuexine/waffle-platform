@@ -1,4 +1,4 @@
-package com.waffle.component.hbase.config;
+package com.waffle.component.kafka.config;
 
 import org.springframework.context.annotation.Import;
 
@@ -10,7 +10,6 @@ import java.lang.annotation.*;
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-@Import({HBaseAutoConfiguration.class})
-public @interface EnableHBaseAutoConfiguration {
-
+@Import({KafkaConfiguration.class})
+public @interface EnableKafkaComponent {
 }
