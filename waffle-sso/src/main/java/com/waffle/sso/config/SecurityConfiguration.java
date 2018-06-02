@@ -27,6 +27,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/oauth/*").permitAll();
     }
 
+    public SecurityConfiguration() {
+        System.out.println("SecurityConfiguration 加载");
+    }
+
     @Override
     @Bean
     protected UserDetailsService userDetailsService() {

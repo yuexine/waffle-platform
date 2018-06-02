@@ -24,6 +24,9 @@
         <module>waffle-component</module>
         <module>waffle-sso</module>
         <module>waffle-blog</module>
+        <module>waffle-notification</module>
+        <module>waffle-task</module>
+        <module>waffle-api</module>
     </modules>
 
     <properties>
@@ -40,7 +43,7 @@
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Finchley.RC1</version>
+                <version>Finchley.RC2</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
