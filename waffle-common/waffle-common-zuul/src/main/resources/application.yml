@@ -7,6 +7,14 @@ eureka:
     enabled: true
 spring:
   application:
-    name: waffle-notification
+    name: service-zuul
 server:
-  port: 8010
+  port: 8080
+zuul:
+  ignored-services: '*'
+  routes:
+    hi:
+      path: /*
+      serviceId: waffle-api
+
+

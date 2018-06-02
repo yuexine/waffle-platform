@@ -4,6 +4,18 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
+    enabled: true
 spring:
   application:
     name: waffle-api
+server:
+  port: 8081
+feign:
+  okhttp:
+    enabled: true
+  client:
+    config:
+      feignName:
+        connectTimeout: 5000
+        readTimeout: 5000
+        loggerLevel: full
