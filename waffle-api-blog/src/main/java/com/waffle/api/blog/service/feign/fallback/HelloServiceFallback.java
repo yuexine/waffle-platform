@@ -1,6 +1,6 @@
-package com.waffle.api.service.feign.fallback;
+package com.waffle.api.blog.service.feign.fallback;
 
-import com.waffle.api.service.feign.HelloService;
+import com.waffle.api.blog.service.feign.HelloService;
 import org.springframework.stereotype.Service;
 
 /**

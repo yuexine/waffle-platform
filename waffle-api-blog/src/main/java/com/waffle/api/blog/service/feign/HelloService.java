@@ -1,6 +1,6 @@
-package com.waffle.api.service.feign;
+package com.waffle.api.blog.service.feign;
 
-import com.waffle.api.service.feign.fallback.HelloServiceFallback;
+import com.waffle.api.blog.service.feign.fallback.HelloServiceFallback;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
