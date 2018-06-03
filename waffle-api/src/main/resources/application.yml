@@ -11,6 +11,8 @@ spring:
 server:
   port: 8081
 feign:
+  hystrix:
+    enabled: true
   okhttp:
     enabled: true
   client:
@@ -19,3 +21,9 @@ feign:
         connectTimeout: 5000
         readTimeout: 5000
         loggerLevel: full
+management:
+  endpoints:
+#    enabled-by-default: true
+    web:
+      exposure:
+        include: '*'

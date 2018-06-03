@@ -12,9 +12,19 @@ server:
   port: 8080
 zuul:
   ignored-services: '*'
+  retryable: true
   routes:
     hi:
-      path: /*
+      path: /hi
+      sensitiveHeaders:
       serviceId: waffle-api
+management:
+  endpoints:
+#    enabled-by-default: true
+    web:
+      exposure:
+        include: '*'
+
+
 
 
