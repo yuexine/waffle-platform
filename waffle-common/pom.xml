@@ -15,7 +15,7 @@
     <modules>
         <module>waffle-common-eureka</module>
         <module>waffle-common-config</module>
-        <module>waffle-common-zuul</module>
+        <module>waffle-common-gateway-zuul</module>
     </modules>
 
 

@@ -7,7 +7,7 @@ eureka:
     enabled: true
 spring:
   application:
-    name: waffle-api
+    name: waffle-webapi
 server:
   port: 8081
 feign:

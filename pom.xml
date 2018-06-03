@@ -23,10 +23,10 @@
         <module>waffle-common</module>
         <module>waffle-component</module>
         <module>waffle-sso</module>
-        <module>waffle-blog</module>
         <module>waffle-notification</module>
         <module>waffle-task</module>
-        <module>waffle-api</module>
+        <module>waffle-api-blog</module>
+        <module>waffle-web-blog</module>
     </modules>
 
     <properties>
