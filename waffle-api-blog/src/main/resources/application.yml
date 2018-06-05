@@ -4,10 +4,16 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
-    enabled: true
+    enabled: false
 spring:
   application:
-    name: waffle-webapi
+    name: waffle-api-blog
+  profiles:
+    active: dev
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
 server:
   port: 8081
 feign:
@@ -27,3 +33,9 @@ management:
     web:
       exposure:
         include: '*'
+application:
+  datasource:
+      url: jdbc:mysql://127.0.0.1:3306/freedom-blog?autoReconnect=true&useUnicode=true&characterEncoding=utf8&useSSL=true
+      username: root
+      password: 123456
+      driver-class: com.mysql.jdbc.Driver

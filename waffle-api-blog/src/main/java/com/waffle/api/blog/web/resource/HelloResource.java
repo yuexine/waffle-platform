@@ -1,4 +1,4 @@
-package com.waffle.api.blog.resource;
+package com.waffle.api.blog.web.resource;
 
 import com.waffle.api.blog.service.feign.HelloService;
 import org.springframework.beans.factory.annotation.Autowired;
