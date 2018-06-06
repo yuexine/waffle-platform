@@ -2,13 +2,14 @@ package com.waffle.api.blog.service.common;
 
 import com.waffle.api.blog.model.Post;
 import com.waffle.api.blog.model.support.PostStatus;
-import com.waffle.api.blog.repository.PostRepository;
+import com.waffle.api.blog.repository.jpa.PostRepository;
 import com.waffle.api.blog.web.model.PostBuilder;
 import com.waffle.api.blog.web.model.PostCondition;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.Optional;
 
 /**
  * @author yuexin
@@ -24,12 +25,12 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public Post findPostById(Long postId) {
-        return postRepository.findPostById(postId);
+    public Optional<Post> findPostById(Long postId) {
+        return postRepository.findById(postId);
     }
 
     @Override
-    public List<Post> searchPostByCondition(PostCondition postCondition) {
+    public Page<Post> searchPostByCondition(PostCondition postCondition) {
         return null;
     }
 

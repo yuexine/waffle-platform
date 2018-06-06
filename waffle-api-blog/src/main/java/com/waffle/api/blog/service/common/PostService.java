@@ -4,17 +4,18 @@ import com.waffle.api.blog.model.Post;
 import com.waffle.api.blog.model.support.PostStatus;
 import com.waffle.api.blog.web.model.PostBuilder;
 import com.waffle.api.blog.web.model.PostCondition;
+import org.springframework.data.domain.Page;
 
-import java.util.List;
+import java.util.Optional;
 
 /**
  * @author yuexin
  */
 public interface PostService {
 
-    Post findPostById(Long postId);
+    Optional<Post> findPostById(Long postId);
 
-    List<Post> searchPostByCondition(PostCondition postCondition);
+    Page<Post> searchPostByCondition(PostCondition postCondition);
 
     void addPost(PostBuilder postBuilder);
 
