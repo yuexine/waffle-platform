@@ -1,7 +1,6 @@
 package com.waffle.api.blog.service.common;
 
 import com.waffle.api.blog.model.Post;
-import com.waffle.api.blog.model.support.PostStatus;
 import com.waffle.api.blog.web.model.PostBuilder;
 import com.waffle.api.blog.web.model.PostCondition;
 import org.springframework.data.domain.Page;
@@ -17,7 +16,9 @@ public interface PostService {
 
     Page<Post> searchPostByCondition(PostCondition postCondition);
 
-    void addPost(PostBuilder postBuilder);
+    Optional<Post> addPost(PostBuilder postBuilder);
 
-    void updatePostStatus(Long postId, PostStatus postStatus);
+    Optional<Post> publishPost(Long... postId);
+
+    Optional<Post> unPublishPost(Long... postId);
 }

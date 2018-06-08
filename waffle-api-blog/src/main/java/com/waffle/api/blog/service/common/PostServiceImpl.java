@@ -1,7 +1,6 @@
 package com.waffle.api.blog.service.common;
 
 import com.waffle.api.blog.model.Post;
-import com.waffle.api.blog.model.support.PostStatus;
 import com.waffle.api.blog.repository.jpa.PostRepository;
 import com.waffle.api.blog.web.model.PostBuilder;
 import com.waffle.api.blog.web.model.PostCondition;
@@ -31,18 +30,26 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public Page<Post> searchPostByCondition(PostCondition postCondition) {
+
         return null;
     }
 
     @Override
-    public void addPost(PostBuilder postBuilder) {
+    public Optional<Post> addPost(PostBuilder postBuilder) {
         Post post = PostBuilder.build();
         post = postRepository.save(post);
         log.info("new post id is:{}", post.getId());
+        return Optional.of(post);
     }
 
     @Override
-    public void updatePostStatus(Long postId, PostStatus postStatus) {
-
+    public Optional<Post> publishPost(Long... postId) {
+        return Optional.empty();
     }
+
+    @Override
+    public Optional<Post> unPublishPost(Long... postId) {
+        return Optional.empty();
+    }
+
 }

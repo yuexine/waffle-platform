@@ -18,7 +18,8 @@ public class SwaggerConfiguration {
     @Bean
     public Docket swaggerSpringMvcPlugin() {
         ApiInfo apiInfo = ApiInfo.DEFAULT;
-        Docket docket = new Docket(DocumentationType.SWAGGER_2).select().apis(RequestHandlerSelectors.basePackage("com.waffle.api.blog.web.resource")).build()
+        Docket docket = new Docket(DocumentationType.SWAGGER_2).select()
+                .apis(RequestHandlerSelectors.basePackage("com.waffle.api.blog.web.resource")).build()
                 .apiInfo(apiInfo).useDefaultResponseMessages(false);
         return docket;
     }

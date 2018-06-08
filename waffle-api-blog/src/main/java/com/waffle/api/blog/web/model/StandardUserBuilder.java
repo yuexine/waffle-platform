@@ -22,7 +22,7 @@ public class StandardUserBuilder {
         u.setName(getUsername());
         u.setPassword(getPassword());
         u.setEmail(getEmail());
-        u.setPassword(getPassword());
+        u.setPhone(getPhone());
         return u;
     }
 }
