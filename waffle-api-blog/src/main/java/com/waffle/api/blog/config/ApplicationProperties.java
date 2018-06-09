@@ -14,6 +14,8 @@ public class ApplicationProperties {
 
     private DataSourceProp dataSource = new DataSourceProp();
 
+    private AliOSSProp aliOss = new AliOSSProp();
+
     @Data
     public static class DataSourceProp {
 
@@ -24,5 +26,17 @@ public class ApplicationProperties {
         private String password;
 
         private String driverClass;
+    }
+
+    @Data
+    public class AliOSSProp {
+
+        private String endpoint;
+
+        private String accessKeyId;
+
+        private String accessKeySecret;
+
+        private String bucket;
     }
 }

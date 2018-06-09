@@ -13,6 +13,11 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.waffle.platform</groupId>
+            <artifactId>waffle-component-utils</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>

@@ -1,4 +1,4 @@
-package com.waffle.api.blog.service.common;
+package com.waffle.api.blog.service.common.file;
 
 /**
  * @author yuexin
