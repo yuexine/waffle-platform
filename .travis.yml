@@ -20,15 +20,15 @@ aftersuccess:
 
 afterfailure:
  - pwd
-
-before_deploy:
- - pwd
-
-deploy:
- - pwd
-
-after_deploy:
- - pwd
+#
+#before_deploy:
+# - pwd
+#
+#deploy:
+# - pwd
+#
+#after_deploy:
+# - pwd
 
 after_script:
   -pwd
