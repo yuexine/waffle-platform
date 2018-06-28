@@ -3,8 +3,35 @@ language: java
 jdk:
   - oraclejdk8
 
+before_install:
+  - echo 'before_install'
+
+install:
+ - pwd
+
+before_script:
+ - pwd
+
 script:
   - mvn clean package -DskipTests=true -Ddockerfile.skip
+
+aftersuccess:
+  - pwd
+
+afterfailure:
+ - pwd
+
+before_deploy:
+ - pwd
+
+deploy:
+ - pwd
+
+after_deploy:
+ - pwd
+
+after_script:
+  -pwd
 
 notifications:
   slack:
