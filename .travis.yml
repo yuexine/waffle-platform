@@ -1,4 +1,11 @@
 language: java
+
+jdk:
+  - oraclejdk8
+
+script:
+  - mvn clean package -DskipTests=true -Ddockerfile.skip
+
 notifications:
   slack:
     secure: ABUg6TfuThjnWWzpTBEMFlnjDpU/yJVpRs6mlwEXDnO7zCY9Jc/3NbMZln110U41gXfD1fWxI4AofuNS0DqetF2oJoyXKXWI7Ky6OYnbwzGvnN4xX1VOq7fJuh1Gah/OxIXYa0j+uqsrR+AFFk+DWDooQXheJ+2B9aBvY8UUPT0IS+6z/sixHELK5xjIKV7N1/wJFwmYOGbWfOZiR2o0+LrnUVBv7VCGNror4vjDenChKs0fgAhxUhteOQXQUDW61BDTrdTLbrpnnpbUrZPohQuClYK6ZcXIfZu2bCv8smS8EOCQJCd1TMJOwhgrkBWEWF3ljcXQStbofUvS1UL8lRGQ5dVhZgGStvPleI/GqQ7z+hLydCMPffJ0xi32SCtk3f/1Rc6SPON6xhDzkMX30bWe4jXNq3bFEDwW6dZI29npgub2J547O5eYIwOLduoqBLb4+Eo8sJ2lj2IKu+PNQ2YcQD+Dtz+9AJjlGUPmvohWZYZ5d+FxhIBF5QoVBeuzarlpvRgDEaXImSXU/UGCJhsVqzU3JyquUE65r48hNXqP/FUwxwNISvxRdlThTlqoW+IxoncBmmJukeqRt+2ckpZ5SzXXXiYNhmrka8GG015Rh30AVQYafoXuMt/0T5OLoQf/ylUUcVbIN/+eM0ZaXCxEXPSwk24PY7HMN7HH9bA=

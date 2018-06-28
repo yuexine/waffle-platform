@@ -4,18 +4,22 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
-    enabled: false
+    enabled: true
 spring:
   application:
     name: waffle-api-blog
   profiles:
-    active: dev
+    active: prod
   jpa:
     hibernate:
       ddl-auto: none
     show-sql: true
 server:
   port: 8081
+ribbon:
+  ReadTimeout: 6000
+  ConnectTimeout: 6000
+  OkToRetryOnAllOperations: false
 feign:
   hystrix:
     enabled: true
@@ -27,6 +31,14 @@ feign:
         connectTimeout: 5000
         readTimeout: 5000
         loggerLevel: full
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds:  6000
+
 management:
   endpoints:
 #    enabled-by-default: true
@@ -41,4 +53,4 @@ application:
     driver-class: com.mysql.jdbc.Driver
 logging:
   level:
-    -root: debug
+    -root: info

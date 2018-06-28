@@ -10,7 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class HelloResource {
 
     @GetMapping(value = "hello")
-    public String getHello() {
+    public String getHello() throws InterruptedException {
+        Thread.sleep(5500);
         return "Hello,World!";
     }
 }

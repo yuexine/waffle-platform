@@ -12,7 +12,6 @@
     <artifactId>waffle-api-blog</artifactId>
 
     <properties>
-        <docker.image.prefix>wuyuexin</docker.image.prefix>
     </properties>
 
     <dependencies>
@@ -107,7 +106,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <repository>wuyuexin/blog-api</repository>
+                    <repository>${docker.image.prefix}/${artifactId}</repository>
                     <tag>${project.version}</tag>
                     <buildArgs>
                         <JAR_FILE>${project.build.finalName}.jar</JAR_FILE>
