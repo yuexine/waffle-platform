@@ -10,7 +10,7 @@ pipeline {
     stage('compile') {
       steps {
         echo 'hello, world'
-        sh 'mvn -B -DskipTests -DskipDockerfile clean package'
+        sh 'mvn -B -DskipTests -Ddockerfile.skip clean package'
       }
     }
   }
