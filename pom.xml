@@ -22,7 +22,7 @@
     <modules>
         <module>waffle-common</module>
         <module>waffle-component</module>
-        <module>waffle-sso</module>
+        <module>waffle-oauth-center</module>
         <module>waffle-notification</module>
         <module>waffle-task</module>
         <module>waffle-api-blog</module>

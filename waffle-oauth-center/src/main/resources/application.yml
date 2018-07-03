@@ -1,0 +1,21 @@
+eureka:
+  instance:
+    appname: waffle-oauth-center
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+    enabled: true
+server:
+  port: 8083
+spring:
+  application:
+    name: waffle-oauth-center
+  profiles:
+    active: dev
+  redis:
+    host: 127.0.0.1
+    database: 0
+logging:
+  level:
+    - org.springframework.security: debug
+

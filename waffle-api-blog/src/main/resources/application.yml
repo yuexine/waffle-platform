@@ -53,4 +53,4 @@ application:
     driver-class: com.mysql.jdbc.Driver
 logging:
   level:
-    -root: info
+    -root: debug
