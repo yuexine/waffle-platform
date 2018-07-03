@@ -12,16 +12,16 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Res
  * @author yuexin
  */
 
-@Configuration
-@EnableResourceServer
-@Order(101)
+//@Configuration
+//@EnableResourceServer
+//@Order(101)
 public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter {
 
     private static final String DEMO_RESOURCE_ID = "order";
 
     @Override
-    public void configure(ResourceServerSecurityConfigurer resources) {
-        resources.resourceId(DEMO_RESOURCE_ID).stateless(true);
+    public void configure(ResourceServerSecurityConfigurer oauthServer) {
+        oauthServer.resourceId(DEMO_RESOURCE_ID).stateless(true);
     }
 
     @Override
