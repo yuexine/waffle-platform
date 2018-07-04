@@ -1,3 +1,4 @@
+# eureka config
 eureka:
   instance:
     appname: waffle-oauth-center
@@ -5,8 +6,10 @@ eureka:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
     enabled: true
+# server port
 server:
   port: 8083
+# spring config
 spring:
   application:
     name: waffle-oauth-center
@@ -15,7 +18,9 @@ spring:
   redis:
     host: 127.0.0.1
     database: 0
+# log
 logging:
   level:
     - org.springframework.security: debug
+# application
 
