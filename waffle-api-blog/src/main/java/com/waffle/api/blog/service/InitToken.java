@@ -19,5 +19,6 @@ public class InitToken implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
         TokenContextHolder.getInstance().setToken(tokenService.applyToken());
+        System.out.println("init token: " + TokenContextHolder.getInstance().getToken());
     }
 }

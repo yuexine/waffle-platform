@@ -18,6 +18,11 @@ public class FeignConfiguration {
     private TokenService tokenService;
 
     @Bean
+    public feign.Logger.Level multipartLoggerLevel() {
+        return feign.Logger.Level.FULL;
+    }
+
+    @Bean
     public FeignBasicAuthRequestInterceptor basicAuthRequestInterceptor() {
         return new FeignBasicAuthRequestInterceptor();
     }

@@ -6,6 +6,5 @@ import org.springframework.web.bind.annotation.RestController;
  * @author yuexin
  */
 @RestController
-public class ClientResource extends BaseResource{
-
+public class ResourceManageResource extends BaseResource {
 }

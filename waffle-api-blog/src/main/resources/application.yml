@@ -17,8 +17,8 @@ spring:
 server:
   port: 8081
 ribbon:
-  ReadTimeout: 6000
-  ConnectTimeout: 6000
+  ReadTimeout: 10000
+  ConnectTimeout: 10000
   OkToRetryOnAllOperations: false
 feign:
   hystrix:
@@ -28,8 +28,8 @@ feign:
   client:
     config:
       feignName:
-        connectTimeout: 5000
-        readTimeout: 5000
+        connectTimeout: 10000
+        readTimeout: 10000
         loggerLevel: full
 hystrix:
   command:
@@ -37,7 +37,7 @@ hystrix:
       execution:
         isolation:
           thread:
-            timeoutInMilliseconds:  6000
+            timeoutInMilliseconds:  10000
 
 management:
   endpoints:
@@ -54,3 +54,4 @@ application:
 logging:
   level:
     -root: debug
+    -com.netflix.hystrix.AbstractCommand: debug

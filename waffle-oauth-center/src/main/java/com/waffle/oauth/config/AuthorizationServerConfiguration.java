@@ -44,19 +44,19 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-//        clients.inMemory().withClient("client_1")
-//                .resourceIds(DEMO_RESOURCE_ID, "abcd")
-//                .authorizedGrantTypes("client_credentials", "refresh_token")
-//                .scopes("select")
-//                .authorities("client")
-//                .secret("123456")
-//                .and().withClient("client_2")
-//                .resourceIds(DEMO_RESOURCE_ID)
-//                .authorizedGrantTypes("password", "refresh_token")
-//                .scopes("select")
-//                .authorities("client")
-//                .secret("123456");
-        clients.withClientDetails(clientDetailsService);
+        clients.inMemory().withClient("client_1")
+                .resourceIds(DEMO_RESOURCE_ID, "abcd")
+                .authorizedGrantTypes("client_credentials", "refresh_token")
+                .scopes("select")
+                .authorities("client")
+                .secret("123456")
+                .and().withClient("client_2")
+                .resourceIds(DEMO_RESOURCE_ID)
+                .authorizedGrantTypes("password", "refresh_token")
+                .scopes("select")
+                .authorities("client")
+                .secret("123456");
+//        clients.withClientDetails(clientDetailsService);
     }
 
     @Override

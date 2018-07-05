@@ -15,7 +15,7 @@ public class HelloResource {
 
     @GetMapping(value = "hello")
     public String getHello(HttpServletRequest request) throws InterruptedException {
-//        Thread.sleep(5500);
+        Thread.sleep(7500);
         System.out.println(request.getHeader("Authorization"));
         return "Hello,World!";
     }
