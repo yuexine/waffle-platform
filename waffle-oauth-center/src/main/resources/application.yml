@@ -5,7 +5,7 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
-    enabled: true
+    enabled: false
 # server port
 server:
   port: 8083
@@ -18,6 +18,15 @@ spring:
   redis:
     host: 127.0.0.1
     database: 0
+  datasource:
+    url: jdbc:mysql://39.104.107.185:3306/oauth-center?autoReconnect=true&useUnicode=true&characterEncoding=utf8&useSSL=true
+    username: oauth
+    password: oauth
+    driver-class-name: com.mysql.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
 # log
 logging:
   level:

@@ -7,5 +7,5 @@ import org.springframework.data.repository.NoRepositoryBean;
  * @author yuexin
  */
 @NoRepositoryBean
-public interface BaseRepository extends JpaRepository {
+public interface BaseRepository<T, ID> extends JpaRepository<T, ID> {
 }

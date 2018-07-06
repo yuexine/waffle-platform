@@ -1,42 +1,43 @@
 package com.waffle.oauth.model;
 
-import com.waffle.oauth.model.support.GrantType;
-import com.waffle.oauth.model.support.Scope;
 import lombok.Data;
-import org.springframework.security.oauth2.provider.client.BaseClientDetails;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
+import javax.persistence.*;
 import java.util.Set;
 
 /**
  * @author yuexin
  */
+@Data
+@Entity
+@Table(name = "client_details")
+public class DefaultClientDetails extends BaseTimedModel {
 
-public class DefaultClientDetails extends BaseClientDetails {
-
-    private Long id;
-
+    @Column(name = "client_id", nullable = false)
     private String clientId;
 
-    private String  clientSecret;
+    @Column(name = "client_secret", nullable = false)
+    private String clientSecret;
 
+    @OneToMany(mappedBy = "clientDetails")
     private Set<Scope> scopes;
 
+    @ManyToMany(mappedBy = "clientDetailsSet")
     private Set<Resource> resources;
 
-    private Set<GrantType> authorizedGrantTypes;
+    @OneToMany(mappedBy = "clientDetails")
+    private Set<GrantType> authorizedGrantTypeNames;
 
-    private Set<String> registeredRedirectUris;
+    @OneToMany(mappedBy = "clientDetails")
+    private Set<RedirectUri> registeredRedirectUris;
 
-    private Set<String> autoApproveScopes;
-
-    private Set authorities;
-
+    @Column(name = "access_token_validity_seconds")
     private Integer accessTokenValiditySeconds;
 
+    @Column(name = "refresh_token_validity_seconds")
     private Integer refreshTokenValiditySeconds;
 
-    private Map<String, Object> additionalInformation = new LinkedHashMap<String, Object>();
+    @OneToMany(mappedBy = "clientDetails")
+    private Set<ClientAdditionalInformation> additionalInformation;
 
 }

@@ -3,7 +3,7 @@ package com.waffle.oauth.constant;
 /**
  * @author yuexin
  */
-public interface LogTopic {
+public class LogTopic {
 
-    String LOAD_CLIENT = "load client";
+    public final String LOAD_CLIENT = "load client";
 }
