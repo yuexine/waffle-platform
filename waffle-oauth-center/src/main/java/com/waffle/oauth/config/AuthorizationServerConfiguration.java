@@ -1,6 +1,5 @@
 package com.waffle.oauth.config;
 
-import com.netflix.discovery.converters.Auto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,9 +11,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.A
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
-import org.springframework.security.oauth2.provider.ClientDetails;
 import org.springframework.security.oauth2.provider.ClientDetailsService;
-import org.springframework.security.oauth2.provider.ClientRegistrationException;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
@@ -44,19 +41,19 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-        clients.inMemory().withClient("client_1")
-                .resourceIds(DEMO_RESOURCE_ID, "abcd")
-                .authorizedGrantTypes("client_credentials", "refresh_token")
-                .scopes("select")
-                .authorities("client")
-                .secret("123456")
-                .and().withClient("client_2")
-                .resourceIds(DEMO_RESOURCE_ID)
-                .authorizedGrantTypes("password", "refresh_token")
-                .scopes("select")
-                .authorities("client")
-                .secret("123456");
-//        clients.withClientDetails(clientDetailsService);
+//        clients.inMemory().withClient("client_1")
+//                .resourceIds(DEMO_RESOURCE_ID, "abcd")
+//                .authorizedGrantTypes("client_credentials", "refresh_token")
+//                .scopes("select")
+//                .authorities("client")
+//                .secret("123456")
+//                .and().withClient("client_2")
+//                .resourceIds(DEMO_RESOURCE_ID)
+//                .authorizedGrantTypes("password", "refresh_token")
+//                .scopes("select")
+//                .authorities("client")
+//                .secret("123456");
+        clients.withClientDetails(clientDetailsService).build();
     }
 
     @Override
