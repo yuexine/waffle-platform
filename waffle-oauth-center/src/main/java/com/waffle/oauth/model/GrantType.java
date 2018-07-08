@@ -1,5 +1,6 @@
 package com.waffle.oauth.model;
 
+import com.waffle.oauth.model.support.GrantTypeName;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -13,7 +14,7 @@ import javax.persistence.*;
 public class GrantType extends BaseModel {
 
     @Column(name = "type", length = 50, nullable = false)
-    private String type;
+    private GrantTypeName type;
 
     @Column(name = "removed")
     private Boolean removed;
