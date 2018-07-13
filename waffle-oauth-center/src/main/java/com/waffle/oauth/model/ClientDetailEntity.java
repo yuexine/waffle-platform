@@ -15,7 +15,7 @@ import java.util.Set;
 @Data
 @Entity
 @Table(name = TableName.CLIENT_DETAIL)
-public class ClientDetail extends BaseTimedModel {
+public class ClientDetailEntity extends BaseTimedModel {
 
     /**
      * 客户端接入ID
@@ -33,25 +33,25 @@ public class ClientDetail extends BaseTimedModel {
      * 客户端scope
      */
     @OneToMany(mappedBy = "clientDetails")
-    private Set<Scope> scopes;
+    private Set<ScopeEntity> scopes;
 
     /**
      * 为当前客户端接入的资源
      */
     @ManyToMany(mappedBy = "clientDetailsSet")
-    private Set<ResourceEntity> resourceEntities;
+    private Set<ResourceEntity> resource;
 
     /**
      * 客户端支持的授权类型
      */
     @OneToMany(mappedBy = "clientDetails")
-    private Set<GrantType> authorizedGrantTypeNames;
+    private Set<GrantTypeEntity> authorizedGrantTypeNames;
 
     /**
      * 客户端受信任的重定向URL
      */
     @OneToMany(mappedBy = "clientDetails")
-    private Set<RedirectUri> registeredRedirectUris;
+    private Set<RedirectUriEntity> registeredRedirectUris;
 
     /**
      * access_token 有效时间
@@ -69,12 +69,12 @@ public class ClientDetail extends BaseTimedModel {
      * 客户端附加信息
      */
     @OneToMany(mappedBy = "clientDetails")
-    private Set<ClientAdditionalInformation> additionalInformation;
+    private Set<ClientAdditionalInformationEntity> additionalInformation;
 
     /**
      * 客户端基本信息
      */
     @OneToOne(mappedBy = "clientDetail")
-    private Client client;
+    private ClientEntity client;
 
 }

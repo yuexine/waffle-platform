@@ -14,7 +14,7 @@ import javax.persistence.Table;
 @Data
 @Entity
 @Table(name = TableName.ROLE)
-public class Role {
+public class RoleEntity extends BaseModel {
 
     @Column(name = "name")
     private RoleName name;

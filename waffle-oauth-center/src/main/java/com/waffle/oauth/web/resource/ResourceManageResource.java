@@ -61,11 +61,8 @@ public class ResourceManageResource extends BaseResource {
      * @since 1.0
      */
     @GetMapping("resource/{resourceId}")
-    public ResourceDetailWrapper getResource(@PathVariable @Valid String resourceId, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            log.error("Oh, No >> {}", bindingResult.getAllErrors());
-        }
-        ResourceEntity resourceEntity = resourceService.getResourceById(resourceId).get();
+    public ResourceDetailWrapper getResource(@PathVariable String resourceId) {
+        ResourceEntity resourceEntity = resourceService.getResourceById(resourceId).orElseGet(ResourceEntity::new);
         return new ResourceDetailWrapper(resourceEntity);
     }
 

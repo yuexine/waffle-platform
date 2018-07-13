@@ -1,7 +1,7 @@
 package com.waffle.oauth.service;
 
-import com.waffle.oauth.model.Client;
-import com.waffle.oauth.model.ClientDetail;
+import com.waffle.oauth.model.ClientDetailEntity;
+import com.waffle.oauth.model.ClientEntity;
 import com.waffle.oauth.web.model.ClientDescription;
 
 /**
@@ -16,14 +16,14 @@ public interface ClientService {
      * @param clientDescription
      * @return
      */
-    ClientDetail addClient(ClientDescription clientDescription);
+    ClientDetailEntity addClient(ClientDescription clientDescription);
 
 
     /**
-     * get Client By Identity key
+     * get ClientEntity By Identity key
      *
      * @param clientId
      * @return
      */
-    Client getClientById(Long clientId);
+    ClientEntity getClientById(Long clientId);
 }

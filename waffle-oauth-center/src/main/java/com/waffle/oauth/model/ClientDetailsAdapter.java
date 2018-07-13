@@ -15,9 +15,9 @@ import java.util.stream.Collectors;
  */
 public class ClientDetailsAdapter implements ClientDetails {
 
-    private ClientDetail clientDetail;
+    private ClientDetailEntity clientDetail;
 
-    public ClientDetailsAdapter(ClientDetail client) {
+    public ClientDetailsAdapter(ClientDetailEntity client) {
         this.clientDetail = client;
     }
 
@@ -28,7 +28,7 @@ public class ClientDetailsAdapter implements ClientDetails {
 
     @Override
     public Set<String> getResourceIds() {
-        return clientDetail.getResourceEntities().stream()
+        return clientDetail.getResource().stream()
                 .map(ResourceEntity::getName)
                 .collect(Collectors.toSet());
     }
@@ -68,7 +68,7 @@ public class ClientDetailsAdapter implements ClientDetails {
     public Set<String> getRegisteredRedirectUri() {
         return clientDetail.getRegisteredRedirectUris().stream()
                 .filter(redirectUri -> !redirectUri.getRemoved())
-                .map(RedirectUri::getUri)
+                .map(RedirectUriEntity::getUri)
                 .collect(Collectors.toSet());
     }
 
@@ -91,7 +91,7 @@ public class ClientDetailsAdapter implements ClientDetails {
     public boolean isAutoApprove(String scope) {
         Set<String> scopes = clientDetail.getScopes().stream()
                 .filter(s -> !s.getRemoved())
-                .filter(Scope::getAutoApprove)
+                .filter(ScopeEntity::getAutoApprove)
                 .map(s -> s.getName().name())
                 .collect(Collectors.toSet());
         if (CollectionUtils.isEmpty(scopes)) {

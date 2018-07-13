@@ -6,6 +6,7 @@ import org.springframework.security.oauth2.provider.ClientRegistrationException;
 
 /**
  * @author yuexin
+ * @since 1.0
  */
 public class ConfigFileClientDetailsService implements ClientDetailsService {
 

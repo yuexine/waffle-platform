@@ -14,7 +14,7 @@ import javax.persistence.*;
 @Data
 @Entity
 @Table(name = TableName.CLIENT_ADDITIONAL_INFORMATION)
-public class ClientAdditionalInformation extends BaseTimedModel {
+public class ClientAdditionalInformationEntity extends BaseTimedModel {
 
     /**
      * 自定义key
@@ -38,5 +38,5 @@ public class ClientAdditionalInformation extends BaseTimedModel {
      * 对应客户端详细
      */
     @ManyToOne(cascade = CascadeType.ALL)
-    private ClientDetail clientDetails;
+    private ClientDetailEntity clientDetails;
 }

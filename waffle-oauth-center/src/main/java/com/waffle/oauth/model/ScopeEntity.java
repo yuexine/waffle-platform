@@ -15,7 +15,7 @@ import javax.persistence.*;
 @Data
 @Entity
 @Table(name = TableName.CLIENT_SCOPE)
-public class Scope extends BaseModel {
+public class ScopeEntity extends BaseModel {
 
     /**
      * 作用域名称
@@ -39,6 +39,6 @@ public class Scope extends BaseModel {
      * 对应的客户端
      */
     @ManyToOne(cascade = CascadeType.ALL)
-    private ClientDetail clientDetails;
+    private ClientDetailEntity clientDetails;
 
 }

@@ -1,6 +1,7 @@
 package com.waffle.oauth.service;
 
-import com.waffle.oauth.model.ClientDetail;
+import com.waffle.oauth.model.ClientDetailEntity;
+import com.waffle.oauth.model.ClientEntity;
 import com.waffle.oauth.repository.ClientDetailsRepository;
 import com.waffle.oauth.web.model.ClientDescription;
 import lombok.extern.slf4j.Slf4j;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 /**
  * @author yuexin
+ * @since 1.0
  */
 @Slf4j
 @Service
@@ -18,8 +20,13 @@ public class ClientServiceImpl implements ClientService {
     private ClientDetailsRepository clientDetailsRepository;
 
     @Override
-    public ClientDetail addClient(ClientDescription clientDescription) {
-        ClientDetail clientDetails = clientDescription.build();
+    public ClientDetailEntity addClient(ClientDescription clientDescription) {
+        ClientDetailEntity clientDetails = clientDescription.build();
         return clientDetailsRepository.save(clientDetails);
+    }
+
+    @Override
+    public ClientEntity getClientById(Long clientId) {
+        return null;
     }
 }

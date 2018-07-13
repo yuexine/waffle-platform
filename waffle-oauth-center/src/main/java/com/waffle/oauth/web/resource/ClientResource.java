@@ -1,7 +1,7 @@
 package com.waffle.oauth.web.resource;
 
-import com.waffle.oauth.model.Client;
-import com.waffle.oauth.model.ClientDetail;
+import com.waffle.oauth.model.ClientDetailEntity;
+import com.waffle.oauth.model.ClientEntity;
 import com.waffle.oauth.service.ClientService;
 import com.waffle.oauth.web.model.ClientDescription;
 import com.waffle.oauth.web.model.ClientDetailWrapper;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 /**
- * Client ResourceEntity
+ * ClientEntity ResourceEntity
  *
  * @author yuexin
  * @since 1.0
@@ -41,8 +41,8 @@ public class ClientResource extends BaseResource{
 
     @GetMapping("client/{clientId}")
     public ClientDetailWrapper getClient(@PathVariable Long clientId) {
-        Client client = clientService.getClientById(clientId);
-        ClientDetail detail = client.getClientDetail();
+        ClientEntity client = clientService.getClientById(clientId);
+        ClientDetailEntity detail = client.getClientDetail();
         return new ClientDetailWrapper(client, detail);
     }
 

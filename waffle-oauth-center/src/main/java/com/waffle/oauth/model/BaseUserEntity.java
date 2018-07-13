@@ -16,7 +16,7 @@ import java.util.Set;
 @Data
 @Entity
 @Table(name = TableName.BASE_USER)
-public class BaseUser extends BaseTimedModel {
+public class BaseUserEntity extends BaseTimedModel {
 
     /**
      * 登录名
@@ -52,17 +52,17 @@ public class BaseUser extends BaseTimedModel {
     @JoinTable(name = "roles_user",
             joinColumns = {@JoinColumn(name = "user_id")},
             inverseJoinColumns = {@JoinColumn(name = "role_id")})
-    private Set<Role> roles = new HashSet<>();
+    private Set<RoleEntity> roles = new HashSet<>();
 
     /**
      * 对应的系统用户
      */
     @OneToOne(mappedBy = "user")
-    private SysUser sysUser;
+    private SysUserEntity sysUser;
 
     /**
      * 对应的客户端用户
      */
     @OneToOne(mappedBy = "user")
-    private ClientUser clientUser;
+    private ClientUserEntity clientUser;
 }

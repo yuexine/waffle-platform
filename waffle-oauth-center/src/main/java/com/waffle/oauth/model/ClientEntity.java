@@ -14,7 +14,7 @@ import javax.persistence.*;
 @Data
 @Entity
 @Table(name = TableName.CLIENT)
-public class Client extends BaseTimedModel {
+public class ClientEntity extends BaseTimedModel {
 
     /**
      * 接入的客户端名称
@@ -26,11 +26,11 @@ public class Client extends BaseTimedModel {
      * 客户端详细信息
      */
     @OneToOne
-    private ClientDetail clientDetail;
+    private ClientDetailEntity clientDetail;
 
     /**
      * 客户端所有者
      */
     @ManyToOne
-    private ClientUser clientUser;
+    private ClientUserEntity clientUser;
 }

@@ -15,7 +15,7 @@ import javax.persistence.*;
 @Data
 @Entity
 @Table(name = TableName.CLIENT_Grant_TYPE)
-public class GrantType extends BaseModel {
+public class GrantTypeEntity extends BaseModel {
 
     /**
      * 授权类型
@@ -39,5 +39,5 @@ public class GrantType extends BaseModel {
      * 对应的客户端详细
      */
     @ManyToOne(cascade = CascadeType.ALL)
-    private ClientDetail clientDetails;
+    private ClientDetailEntity clientDetails;
 }

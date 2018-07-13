@@ -79,7 +79,7 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
 //            @Override
 //            public OAuth2AccessToken enhance(OAuth2AccessToken accessToken, OAuth2Authentication authentication) {
 //                String userName = authentication.getUserAuthentication().getName();
-//                ClientUser user = (ClientUser) authentication.getUserAuthentication().getPrincipal();// 与登录时候放进去的UserDetail实现类一直查看link{SecurityConfiguration}
+//                ClientUserEntity user = (ClientUserEntity) authentication.getUserAuthentication().getPrincipal();// 与登录时候放进去的UserDetail实现类一直查看link{SecurityConfiguration}
 //                /** 自定义一些token属性 ***/
 //                final Map<String, Object> additionalInformation = new HashMap<>();
 //                additionalInformation.put("userName", userName);

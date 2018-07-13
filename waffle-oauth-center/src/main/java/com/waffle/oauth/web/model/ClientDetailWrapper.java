@@ -1,8 +1,8 @@
 package com.waffle.oauth.web.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.waffle.oauth.model.Client;
-import com.waffle.oauth.model.ClientDetail;
+import com.waffle.oauth.model.ClientDetailEntity;
+import com.waffle.oauth.model.ClientEntity;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,17 +19,17 @@ import java.io.Serializable;
 public class ClientDetailWrapper implements Wrapper, Serializable {
 
     @JsonIgnore
-    private Client client;
+    private ClientEntity client;
 
     @JsonIgnore
-    private ClientDetail clientDetail;
+    private ClientDetailEntity clientDetail;
 
     private String name;
 
     public ClientDetailWrapper() {
     }
 
-    public ClientDetailWrapper(Client client, ClientDetail detail) {
+    public ClientDetailWrapper(ClientEntity client, ClientDetailEntity detail) {
         this.client = client;
         this.clientDetail = detail;
     }

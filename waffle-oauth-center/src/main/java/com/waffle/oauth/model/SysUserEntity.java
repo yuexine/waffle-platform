@@ -14,9 +14,9 @@ import java.io.Serializable;
 @Data
 @Entity
 @Table(name = TableName.SYS_USER)
-public class SysUser implements Serializable {
+public class SysUserEntity extends BaseTimedModel implements Serializable {
 
     @OneToOne
-    private BaseUser user;
+    private BaseUserEntity user;
 
 }

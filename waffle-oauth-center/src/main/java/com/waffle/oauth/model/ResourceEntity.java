@@ -49,7 +49,7 @@ public class ResourceEntity extends BaseModel {
             name = "resource_client_details",
             joinColumns = {@JoinColumn(name = "resource_id", nullable = false)},
             inverseJoinColumns = {@JoinColumn(name = "client_details_id", nullable = false)})
-    private Set<ClientDetail> clientDetailsSet;
+    private Set<ClientDetailEntity> clientDetailsSet;
 
     //more...
 }

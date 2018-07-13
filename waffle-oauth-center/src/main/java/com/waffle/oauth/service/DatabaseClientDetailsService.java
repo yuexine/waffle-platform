@@ -1,6 +1,6 @@
 package com.waffle.oauth.service;
 
-import com.waffle.oauth.model.ClientDetail;
+import com.waffle.oauth.model.ClientDetailEntity;
 import com.waffle.oauth.model.ClientDetailsAdapter;
 import com.waffle.oauth.repository.ClientDetailsRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -26,7 +26,7 @@ public class DatabaseClientDetailsService implements ClientDetailsService {
     @Override
     public ClientDetails loadClientByClientId(String clientId) throws ClientRegistrationException {
         log.debug("load client start, id is {}", clientId);
-        Optional<ClientDetail> clientDetailsOptional = clientDetailsRepository.findByClientId(clientId);
+        Optional<ClientDetailEntity> clientDetailsOptional = clientDetailsRepository.findByClientId(clientId);
 
         return clientDetailsOptional
                 .map(ClientDetailsAdapter::new)

@@ -15,7 +15,7 @@ import javax.persistence.*;
 @Data
 @Entity
 @Table(name = TableName.CLIENT_REDIRECT_URI)
-public class RedirectUri extends BaseTimedModel {
+public class RedirectUriEntity extends BaseTimedModel {
 
     /**
      * 重定向地址
@@ -40,5 +40,5 @@ public class RedirectUri extends BaseTimedModel {
      * 对应的客户端详细
      */
     @ManyToOne(cascade = CascadeType.ALL)
-    private ClientDetail clientDetails;
+    private ClientDetailEntity clientDetails;
 }

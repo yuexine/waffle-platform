@@ -20,14 +20,14 @@ import java.util.Set;
 @Data
 @Entity
 @Table(name = TableName.CLIENT_USER)
-public class ClientUser implements Serializable {
+public class ClientUserEntity extends BaseTimedModel implements Serializable {
 
     @OneToOne
-    private BaseUser user;
+    private BaseUserEntity user;
 
     /**
      * 拥有的客户端集合
      */
     @OneToMany(mappedBy = "clientUser")
-    private Set<Client> clients = new HashSet<>();
+    private Set<ClientEntity> clients = new HashSet<>();
 }
