@@ -26,11 +26,11 @@ public class ClientEntity extends BaseTimedModel {
      * 客户端详细信息
      */
     @OneToOne
-    private ClientDetailEntity clientDetail;
+    private ClientDetailEntity clientDetail = new ClientDetailEntity();
 
     /**
      * 客户端所有者
      */
     @ManyToOne
-    private ClientUserEntity clientUser;
+    private ClientUserEntity clientUser = new ClientUserEntity();
 }

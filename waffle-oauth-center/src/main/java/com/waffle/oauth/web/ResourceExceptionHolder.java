@@ -18,7 +18,7 @@ public class ResourceExceptionHolder {
     @ExceptionHandler({NullPointerException.class})
     @ResponseBody
     public String handleNullPointException(NullPointerException exception) {
-        log.error("Oh, No >> {}", exception);
+        log.error("Oh, No >>", exception);
         return "不走心...";
     }
 }

@@ -8,6 +8,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 /**
  * @author yuexin
  * @since 1.0
@@ -26,7 +28,7 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public ClientEntity getClientById(Long clientId) {
+    public Optional<ClientEntity> getClientById(Long clientId) {
         return null;
     }
 }

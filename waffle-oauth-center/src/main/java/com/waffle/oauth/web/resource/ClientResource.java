@@ -33,7 +33,7 @@ public class ClientResource extends BaseResource{
     @PostMapping("client")
     public Object postClient(@RequestBody @Valid ClientDescription clientDescription, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            log.error("Oh, No >> {}", bindingResult.getAllErrors());
+            log.error("Oh, No >>", bindingResult.getAllErrors());
             return ResponseEntity.badRequest();
         }
         return clientService.addClient(clientDescription);
@@ -41,7 +41,7 @@ public class ClientResource extends BaseResource{
 
     @GetMapping("client/{clientId}")
     public ClientDetailWrapper getClient(@PathVariable Long clientId) {
-        ClientEntity client = clientService.getClientById(clientId);
+        ClientEntity client = clientService.getClientById(clientId).orElseGet(ClientEntity::new);
         ClientDetailEntity detail = client.getClientDetail();
         return new ClientDetailWrapper(client, detail);
     }

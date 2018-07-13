@@ -13,7 +13,10 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 /**
+ * 资源管理
+ *
  * @author yuexin
+ * @since 1.0
  */
 @Slf4j
 @RestController
@@ -47,7 +50,7 @@ public class ResourceManageResource extends BaseResource {
     @PostMapping("resource")
     public ResponseEntity registerResource(@RequestBody @Valid ResourceDescription rd, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            log.error("Oh, No >> {}", bindingResult.getAllErrors());
+            log.error("Oh, No >>", bindingResult.getAllErrors());
         }
         ResourceEntity re = resourceService.registerResource(rd.getName(), rd.getResourceId(), rd.getUri());
         return ResponseEntity.ok().body(re.getId());

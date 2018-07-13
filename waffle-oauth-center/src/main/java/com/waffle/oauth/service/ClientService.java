@@ -4,6 +4,8 @@ import com.waffle.oauth.model.ClientDetailEntity;
 import com.waffle.oauth.model.ClientEntity;
 import com.waffle.oauth.web.model.ClientDescription;
 
+import java.util.Optional;
+
 /**
  * @author yuexin
  * @since 1.0
@@ -25,5 +27,5 @@ public interface ClientService {
      * @param clientId
      * @return
      */
-    ClientEntity getClientById(Long clientId);
+    Optional<ClientEntity> getClientById(Long clientId);
 }
