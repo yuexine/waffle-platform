@@ -5,6 +5,7 @@ import lombok.Data;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import java.io.Serializable;
 import java.util.HashSet;
@@ -19,7 +20,10 @@ import java.util.Set;
 @Data
 @Entity
 @Table(name = TableName.CLIENT_USER)
-public class ClientUser extends BaseUserInfo implements Serializable {
+public class ClientUser implements Serializable {
+
+    @OneToOne
+    private BaseUser user;
 
     /**
      * 拥有的客户端集合

@@ -23,11 +23,6 @@ public interface TableName {
     String CLIENT_DETAIL = TABLE_PREFIX + "client_detail";
 
     /**
-     * 客户端归属用户
-     */
-    String CLIENT_USER = TABLE_PREFIX + "client_user";
-
-    /**
      * 客户端附加信息
      */
     String CLIENT_ADDITIONAL_INFORMATION = TABLE_PREFIX + "client_additional_information";
@@ -51,4 +46,24 @@ public interface TableName {
      * 资源表
      */
     String RESOURCE = TABLE_PREFIX + "resource";
+
+    /**
+     * 客户端归属用户
+     */
+    String CLIENT_USER = TABLE_PREFIX + "client_user";
+
+    /**
+     * 用户基础信息表
+     */
+    String BASE_USER = TABLE_PREFIX + "base_user";
+
+    /**
+     * 系统用户
+     */
+    String SYS_USER = TABLE_PREFIX + "sys_user";
+
+    /**
+     * 角色
+     */
+    String ROLE = TABLE_PREFIX + "role";
 }

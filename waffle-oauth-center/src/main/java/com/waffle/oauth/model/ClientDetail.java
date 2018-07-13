@@ -39,7 +39,7 @@ public class ClientDetail extends BaseTimedModel {
      * 为当前客户端接入的资源
      */
     @ManyToMany(mappedBy = "clientDetailsSet")
-    private Set<Resource> resources;
+    private Set<ResourceEntity> resourceEntities;
 
     /**
      * 客户端支持的授权类型

@@ -15,7 +15,7 @@ import java.util.Set;
 @Data
 @Entity
 @Table(name = TableName.RESOURCE)
-public class Resource extends BaseModel {
+public class ResourceEntity extends BaseModel {
 
     /**
      * 资源名
@@ -39,7 +39,7 @@ public class Resource extends BaseModel {
      * 资源已删除
      */
     @Column(name = "removed")
-    private Boolean removed;
+    private Boolean removed = false;
 
     /**
      * 授权的客户端列表

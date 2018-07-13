@@ -28,8 +28,8 @@ public class ClientDetailsAdapter implements ClientDetails {
 
     @Override
     public Set<String> getResourceIds() {
-        return clientDetail.getResources().stream()
-                .map(Resource::getName)
+        return clientDetail.getResourceEntities().stream()
+                .map(ResourceEntity::getName)
                 .collect(Collectors.toSet());
     }
 
