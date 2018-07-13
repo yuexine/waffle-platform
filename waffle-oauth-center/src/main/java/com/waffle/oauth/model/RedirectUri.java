@@ -24,5 +24,5 @@ public class RedirectUri extends BaseTimedModel {
     private String remark;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    private DefaultClientDetails clientDetails;
+    private ClientDetail clientDetails;
 }

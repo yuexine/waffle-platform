@@ -10,3 +10,6 @@ spring:
     name: waffle-notification
 server:
   port: 8010
+logging:
+  level:
+    -org.springframework.security: debug

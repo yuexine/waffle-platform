@@ -24,7 +24,7 @@ public class Resource extends BaseModel {
             name = "resource_client_details",
             joinColumns = {@JoinColumn(name = "resource_id", nullable = false)},
             inverseJoinColumns = {@JoinColumn(name = "client_details_id", nullable = false)})
-    private Set<DefaultClientDetails> clientDetailsSet;
+    private Set<ClientDetail> clientDetailsSet;
 
     //more...
 }

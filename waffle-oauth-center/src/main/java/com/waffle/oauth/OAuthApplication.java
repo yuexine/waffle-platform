@@ -18,7 +18,7 @@ public class OAuthApplication {
 
     @GetMapping("/")
     public String home() {
-        return "Hello, I am SSO Application";
+        return "Hello, I am OAuth Application";
     }
 
 }

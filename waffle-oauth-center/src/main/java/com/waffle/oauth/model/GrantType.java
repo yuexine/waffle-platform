@@ -23,5 +23,5 @@ public class GrantType extends BaseModel {
     private String remark;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    private DefaultClientDetails clientDetails;
+    private ClientDetail clientDetails;
 }

@@ -1,13 +1,12 @@
 package com.waffle.oauth.service;
 
+import com.waffle.oauth.model.ClientDetail;
 import com.waffle.oauth.model.ClientDetailsAdapter;
-import com.waffle.oauth.model.DefaultClientDetails;
 import com.waffle.oauth.repository.ClientDetailsRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.oauth2.provider.ClientDetails;
 import org.springframework.security.oauth2.provider.ClientDetailsService;
 import org.springframework.security.oauth2.provider.ClientRegistrationException;
-import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
@@ -15,7 +14,7 @@ import java.util.Optional;
  * @author yuexin
  */
 @Slf4j
-@Service
+//@Service
 public class DatabaseClientDetailsService implements ClientDetailsService {
 
     private ClientDetailsRepository clientDetailsRepository;
@@ -27,7 +26,7 @@ public class DatabaseClientDetailsService implements ClientDetailsService {
     @Override
     public ClientDetails loadClientByClientId(String clientId) throws ClientRegistrationException {
         log.debug("load client start, id is {}", clientId);
-        Optional<DefaultClientDetails> clientDetailsOptional = clientDetailsRepository.findByClientId(clientId);
+        Optional<ClientDetail> clientDetailsOptional = clientDetailsRepository.findByClientId(clientId);
 
         return clientDetailsOptional
                 .map(ClientDetailsAdapter::new)

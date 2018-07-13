@@ -23,6 +23,6 @@ public class Scope extends BaseModel {
     private Boolean removed;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    private DefaultClientDetails clientDetails;
+    private ClientDetail clientDetails;
 
 }

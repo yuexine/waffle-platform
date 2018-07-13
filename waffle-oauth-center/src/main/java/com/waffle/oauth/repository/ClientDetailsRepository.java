@@ -1,6 +1,6 @@
 package com.waffle.oauth.repository;
 
-import com.waffle.oauth.model.DefaultClientDetails;
+import com.waffle.oauth.model.ClientDetail;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
@@ -9,7 +9,7 @@ import java.util.Optional;
  * @author yuexin
  */
 @Repository
-public interface ClientDetailsRepository extends BaseRepository<DefaultClientDetails, Long> {
+public interface ClientDetailsRepository extends BaseRepository<ClientDetail, Long> {
 
-    Optional<DefaultClientDetails> findByClientId(String clientId);
+    Optional<ClientDetail> findByClientId(String clientId);
 }

@@ -1,5 +1,6 @@
 package com.waffle.oauth.model;
 
+import com.waffle.oauth.constant.TableName;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -10,8 +11,8 @@ import java.util.Set;
  */
 @Data
 @Entity
-@Table(name = "client_details")
-public class DefaultClientDetails extends BaseTimedModel {
+@Table(name = TableName.CLIENT_DETAIL)
+public class ClientDetail extends BaseTimedModel {
 
     @Column(name = "client_id", nullable = false)
     private String clientId;
@@ -39,5 +40,8 @@ public class DefaultClientDetails extends BaseTimedModel {
 
     @OneToMany(mappedBy = "clientDetails")
     private Set<ClientAdditionalInformation> additionalInformation;
+
+    @OneToOne(mappedBy = "clientDetail")
+    private Client client;
 
 }

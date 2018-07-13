@@ -22,5 +22,5 @@ public class ClientAdditionalInformation extends BaseTimedModel {
     private Boolean removed;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    private DefaultClientDetails clientDetails;
+    private ClientDetail clientDetails;
 }

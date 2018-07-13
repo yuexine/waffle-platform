@@ -1,6 +1,6 @@
 package com.waffle.oauth.web.model;
 
-import com.waffle.oauth.model.DefaultClientDetails;
+import com.waffle.oauth.model.ClientDetail;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 
@@ -13,9 +13,9 @@ public class ClientDescription {
 
     private String clientId;
 
-    public DefaultClientDetails build() {
-        DefaultClientDetails defaultClientDetails = new DefaultClientDetails();
-        defaultClientDetails.setClientId(clientId);
-        return defaultClientDetails;
+    public ClientDetail build() {
+        ClientDetail clientDetail = new ClientDetail();
+        clientDetail.setClientId(clientId);
+        return clientDetail;
     }
 }

@@ -12,20 +12,20 @@ import java.util.stream.Collectors;
  */
 public class ClientDetailsAdapter implements ClientDetails {
 
-    private DefaultClientDetails clientDetails;
+    private ClientDetail clientDetail;
 
-    public ClientDetailsAdapter(DefaultClientDetails client) {
-        this.clientDetails = client;
+    public ClientDetailsAdapter(ClientDetail client) {
+        this.clientDetail = client;
     }
 
     @Override
     public String getClientId() {
-        return clientDetails.getClientId();
+        return clientDetail.getClientId();
     }
 
     @Override
     public Set<String> getResourceIds() {
-        return clientDetails.getResources().stream()
+        return clientDetail.getResources().stream()
                 .map(Resource::getName)
                 .collect(Collectors.toSet());
     }
@@ -37,17 +37,17 @@ public class ClientDetailsAdapter implements ClientDetails {
 
     @Override
     public String getClientSecret() {
-        return clientDetails.getClientSecret();
+        return clientDetail.getClientSecret();
     }
 
     @Override
     public boolean isScoped() {
-        return clientDetails.getScopes().stream().anyMatch(clientDetail -> !clientDetail.getRemoved());
+        return clientDetail.getScopes().stream().anyMatch(clientDetail -> !clientDetail.getRemoved());
     }
 
     @Override
     public Set<String> getScope() {
-        return clientDetails.getScopes().stream()
+        return clientDetail.getScopes().stream()
                 .filter(scope -> !scope.getRemoved())
                 .map(scope -> scope.getName().name())
                 .collect(Collectors.toSet());
@@ -55,7 +55,7 @@ public class ClientDetailsAdapter implements ClientDetails {
 
     @Override
     public Set<String> getAuthorizedGrantTypes() {
-        return clientDetails.getAuthorizedGrantTypeNames().stream()
+        return clientDetail.getAuthorizedGrantTypeNames().stream()
                 .filter(grantType -> !grantType.getRemoved())
                 .map(grantType -> grantType.getType().name())
                 .collect(Collectors.toSet());
@@ -63,7 +63,7 @@ public class ClientDetailsAdapter implements ClientDetails {
 
     @Override
     public Set<String> getRegisteredRedirectUri() {
-        return clientDetails.getRegisteredRedirectUris().stream()
+        return clientDetail.getRegisteredRedirectUris().stream()
                 .filter(redirectUri -> !redirectUri.getRemoved())
                 .map(RedirectUri::getUri)
                 .collect(Collectors.toSet());
@@ -76,17 +76,17 @@ public class ClientDetailsAdapter implements ClientDetails {
 
     @Override
     public Integer getAccessTokenValiditySeconds() {
-        return clientDetails.getAccessTokenValiditySeconds();
+        return clientDetail.getAccessTokenValiditySeconds();
     }
 
     @Override
     public Integer getRefreshTokenValiditySeconds() {
-        return clientDetails.getRefreshTokenValiditySeconds();
+        return clientDetail.getRefreshTokenValiditySeconds();
     }
 
     @Override
     public boolean isAutoApprove(String scope) {
-        Set<String> scopes = clientDetails.getScopes().stream()
+        Set<String> scopes = clientDetail.getScopes().stream()
                 .filter(s -> !s.getRemoved())
                 .filter(Scope::getAutoApprove)
                 .map(s -> s.getName().name())
@@ -101,7 +101,7 @@ public class ClientDetailsAdapter implements ClientDetails {
     @Override
     public Map<String, Object> getAdditionalInformation() {
         Map<String, Object> additionalInformation = new HashMap<>();
-        clientDetails.getAdditionalInformation().forEach(information -> additionalInformation.put(information.getName(), information.getValue()));
+        clientDetail.getAdditionalInformation().forEach(information -> additionalInformation.put(information.getName(), information.getValue()));
         return additionalInformation;
     }
 }

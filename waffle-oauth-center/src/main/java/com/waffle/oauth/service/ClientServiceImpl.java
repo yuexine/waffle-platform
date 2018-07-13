@@ -1,6 +1,6 @@
 package com.waffle.oauth.service;
 
-import com.waffle.oauth.model.DefaultClientDetails;
+import com.waffle.oauth.model.ClientDetail;
 import com.waffle.oauth.repository.ClientDetailsRepository;
 import com.waffle.oauth.web.model.ClientDescription;
 import lombok.extern.slf4j.Slf4j;
@@ -18,8 +18,8 @@ public class ClientServiceImpl implements ClientService {
     private ClientDetailsRepository clientDetailsRepository;
 
     @Override
-    public DefaultClientDetails addClient(ClientDescription clientDescription) {
-        DefaultClientDetails clientDetails = clientDescription.build();
+    public ClientDetail addClient(ClientDescription clientDescription) {
+        ClientDetail clientDetails = clientDescription.build();
         return clientDetailsRepository.save(clientDetails);
     }
 }
