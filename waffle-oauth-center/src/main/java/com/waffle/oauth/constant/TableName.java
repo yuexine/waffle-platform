@@ -26,4 +26,29 @@ public interface TableName {
      * 客户端归属用户
      */
     String CLIENT_USER = TABLE_PREFIX + "client_user";
+
+    /**
+     * 客户端附加信息
+     */
+    String CLIENT_ADDITIONAL_INFORMATION = TABLE_PREFIX + "client_additional_information";
+
+    /**
+     * 客户端授权类型
+     */
+    String CLIENT_Grant_TYPE = TABLE_PREFIX + "grant_type";
+
+    /**
+     * 客户端重定向URI
+     */
+    String CLIENT_REDIRECT_URI = TABLE_PREFIX + "redirect_uri";
+
+    /**
+     * 客户端域
+     */
+    String CLIENT_SCOPE = TABLE_PREFIX + "scope";
+
+    /**
+     * 资源表
+     */
+    String RESOURCE = TABLE_PREFIX + "resource";
 }

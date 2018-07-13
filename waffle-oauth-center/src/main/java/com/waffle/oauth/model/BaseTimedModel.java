@@ -11,7 +11,10 @@ import javax.persistence.MappedSuperclass;
 import java.util.Date;
 
 /**
+ * 审计信息类
+ *
  * @author yuexin
+ * @since 1.0
  */
 @Data
 @MappedSuperclass

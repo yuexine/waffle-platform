@@ -8,7 +8,10 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 /**
+ * 适配接入客户端到待验证的客户端信息
+ *
  * @author yuexin
+ * @since 1.0
  */
 public class ClientDetailsAdapter implements ClientDetails {
 
