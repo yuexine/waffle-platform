@@ -43,8 +43,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         ;
         http
                 .authorizeRequests()
-                    .antMatchers("/resource/**").fullyAuthenticated()
-                    .antMatchers("/client/**").fullyAuthenticated()
+                    .antMatchers("/resource/**").hasRole("USER")
+                    .antMatchers("/client/**").hasRole("MANAGER")
                     .and()
                 .requestMatchers()
                     .antMatchers("/resource/**", "/client/**", "/login", "logout")

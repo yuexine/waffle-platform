@@ -8,25 +8,25 @@ public enum RoleName {
     /**
      * 系统管理员
      */
-    ADMIN,
+    ROLE_ADMIN,
 
     /**
      * 管理管理运营
      */
-    MANAGER,
+    ROLE_MANAGER,
 
     /**
      * 系统普通用户
      */
-    SYS_USER,
+    ROLE_SYS_USER,
 
     /**
      * 接入的客户端拥有者
      */
-    CLIENT_USER,
+    ROLE_CLIENT_USER,
 
     /**
      * 系统管理的用户
      */
-    USER;
+    ROLE_USER;
 }
