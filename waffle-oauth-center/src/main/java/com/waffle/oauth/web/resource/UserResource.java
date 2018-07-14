@@ -14,7 +14,10 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.validation.Valid;
 
 /**
+ * 用户接口
+ *
  * @author yuexin
+ * @since 1.0
  */
 @Slf4j
 @RestController
@@ -32,7 +35,7 @@ public class UserResource {
         if (bindingResult.hasErrors()) {
             log.error("Oh, No >> {}", bindingResult.getAllErrors());
         }
-        BaseUserEntity userEntity = userService.register(userDescription.getUsername(), userDescription.getPassword(), userDescription.getPhone(), userDescription.getEmail());
+        BaseUserEntity userEntity = userService.registerUser(userDescription.getUsername(), userDescription.getPassword(), userDescription.getPhone(), userDescription.getEmail());
         return new UserWrapper(userEntity);
     }
 }

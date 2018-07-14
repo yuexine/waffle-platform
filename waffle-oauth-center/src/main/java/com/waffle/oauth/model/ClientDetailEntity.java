@@ -74,7 +74,7 @@ public class ClientDetailEntity extends BaseTimedModel {
     /**
      * 客户端基本信息
      */
-    @OneToOne(mappedBy = "clientDetail")
+    @OneToOne(mappedBy = "clientDetail", cascade = CascadeType.ALL)
     private ClientEntity client;
 
 }
