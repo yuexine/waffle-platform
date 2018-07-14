@@ -3,7 +3,7 @@ package com.waffle.oauth.service;
 import com.waffle.oauth.model.ClientDetailEntity;
 import com.waffle.oauth.model.ClientEntity;
 import com.waffle.oauth.repository.ClientDetailsRepository;
-import com.waffle.oauth.web.model.ClientDescription;
+import com.waffle.oauth.web.vmodel.ClientDescription;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

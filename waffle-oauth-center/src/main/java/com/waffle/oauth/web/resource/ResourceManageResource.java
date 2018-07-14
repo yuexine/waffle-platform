@@ -2,8 +2,8 @@ package com.waffle.oauth.web.resource;
 
 import com.waffle.oauth.model.ResourceEntity;
 import com.waffle.oauth.service.ResourceService;
-import com.waffle.oauth.web.model.ResourceDescription;
-import com.waffle.oauth.web.model.ResourceDetailWrapper;
+import com.waffle.oauth.web.vmodel.ResourceDescription;
+import com.waffle.oauth.web.wrapper.ResourceDetailWrapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

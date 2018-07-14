@@ -1,4 +1,4 @@
-package com.waffle.oauth.web.model;
+package com.waffle.oauth.web.vmodel;
 
 import lombok.Data;
 

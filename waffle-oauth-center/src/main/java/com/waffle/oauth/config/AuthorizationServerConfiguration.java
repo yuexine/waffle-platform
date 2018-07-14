@@ -1,5 +1,6 @@
 package com.waffle.oauth.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -10,6 +11,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.A
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
+import org.springframework.security.oauth2.provider.ClientDetailsService;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
@@ -21,16 +23,18 @@ import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 @EnableAuthorizationServer
 public class AuthorizationServerConfiguration extends AuthorizationServerConfigurerAdapter {
 
-    private static final String DEMO_RESOURCE_ID = "order";
-
-    //    @Autowired
-    private AuthenticationManager authenticationManager;
+    private final AuthenticationManager authenticationManager;
 
 //    @Autowired
 //    private RedisConnectionFactory redisConnectionFactory;
 
-//    @Autowired
-//    private ClientDetailsService clientDetailsService;
+    private final ClientDetailsService clientDetailsService;
+
+    @Autowired
+    public AuthorizationServerConfiguration(AuthenticationManager authenticationManager, ClientDetailsService clientDetailsService) {
+        this.authenticationManager = authenticationManager;
+        this.clientDetailsService = clientDetailsService;
+    }
 
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) {
@@ -39,19 +43,7 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-        clients.inMemory().withClient("client_1")
-                .resourceIds(DEMO_RESOURCE_ID, "abcd")
-                .authorizedGrantTypes("client_credentials", "refresh_token")
-                .scopes("select")
-                .authorities("client")
-                .secret("123456")
-                .and().withClient("client_2")
-                .resourceIds(DEMO_RESOURCE_ID)
-                .authorizedGrantTypes("password", "refresh_token")
-                .scopes("select")
-                .authorities("client")
-                .secret("123456");
-//        clients.withClientDetails(clientDetailsService).build();
+        clients.withClientDetails(clientDetailsService).build();
     }
 
     @Override
@@ -60,14 +52,13 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
                 .allowedTokenEndpointRequestMethods(HttpMethod.GET, HttpMethod.POST)
                 .tokenStore(tokenStore())
                 .accessTokenConverter(accessTokenConverter())
-//                .authenticationManager(authenticationManager())
+                .authenticationManager(authenticationManager)
         ;
     }
 
     @Bean
     public TokenStore tokenStore() {
-        TokenStore tokenStore = new JwtTokenStore(accessTokenConverter());
-        return tokenStore;
+        return new JwtTokenStore(accessTokenConverter());
     }
 
     @Bean

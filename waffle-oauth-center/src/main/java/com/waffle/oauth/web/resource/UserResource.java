@@ -2,8 +2,8 @@ package com.waffle.oauth.web.resource;
 
 import com.waffle.oauth.model.BaseUserEntity;
 import com.waffle.oauth.service.UserService;
-import com.waffle.oauth.web.model.UserDescription;
-import com.waffle.oauth.web.model.UserWrapper;
+import com.waffle.oauth.web.vmodel.UserDescription;
+import com.waffle.oauth.web.wrapper.UserWrapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;

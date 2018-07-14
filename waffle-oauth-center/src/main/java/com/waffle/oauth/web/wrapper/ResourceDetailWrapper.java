@@ -1,4 +1,4 @@
-package com.waffle.oauth.web.model;
+package com.waffle.oauth.web.wrapper;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.waffle.oauth.model.ResourceEntity;

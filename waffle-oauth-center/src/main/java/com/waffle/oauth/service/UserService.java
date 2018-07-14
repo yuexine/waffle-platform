@@ -17,5 +17,5 @@ public interface UserService {
      * @param email
      * @return
      */
-    BaseUserEntity register(String username, String password, String phone, String email);
+    BaseUserEntity registerUser(String username, String password, String phone, String email);
 }

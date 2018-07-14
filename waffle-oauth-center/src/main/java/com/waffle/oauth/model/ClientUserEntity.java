@@ -3,10 +3,7 @@ package com.waffle.oauth.model;
 import com.waffle.oauth.constant.TableName;
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -22,7 +19,7 @@ import java.util.Set;
 @Table(name = TableName.CLIENT_USER)
 public class ClientUserEntity extends BaseTimedModel implements Serializable {
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private BaseUserEntity user;
 
     /**

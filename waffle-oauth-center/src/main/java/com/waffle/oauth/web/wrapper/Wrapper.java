@@ -1,4 +1,4 @@
-package com.waffle.oauth.web.model;
+package com.waffle.oauth.web.wrapper;
 
 /**
  * 包装对象，用于对外提供数据

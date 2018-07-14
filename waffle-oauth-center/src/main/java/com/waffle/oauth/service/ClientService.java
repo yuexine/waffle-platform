@@ -2,7 +2,7 @@ package com.waffle.oauth.service;
 
 import com.waffle.oauth.model.ClientDetailEntity;
 import com.waffle.oauth.model.ClientEntity;
-import com.waffle.oauth.web.model.ClientDescription;
+import com.waffle.oauth.web.vmodel.ClientDescription;
 
 import java.util.Optional;
 
