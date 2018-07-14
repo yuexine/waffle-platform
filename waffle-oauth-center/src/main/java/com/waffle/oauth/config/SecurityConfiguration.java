@@ -11,10 +11,7 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.firewall.HttpFirewall;
 import org.springframework.security.web.firewall.StrictHttpFirewall;
@@ -30,7 +27,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     private TokenAuthenticationFilter tokenAuthenticationFilter;
 
     public SecurityConfiguration() {
-        System.out.println("SecurityConfiguration 加载");
+        System.out.println("SecurityConfiguration init");
     }
 
     @Override
@@ -75,20 +72,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         return firewall;
     }
 
-    @Override
-    @Bean
-    protected UserDetailsService userDetailsService() {
-        InMemoryUserDetailsManager memoryUserDetailsManager = new InMemoryUserDetailsManager();
-        memoryUserDetailsManager.createUser(User.withUsername("user_1").password("123456").authorities("USER").build());
-        memoryUserDetailsManager.createUser(User.withUsername("user_2").password("123456").authorities("USER").build());
-        return memoryUserDetailsManager;
-    }
-
     @Bean
     @Override
     public AuthenticationManager authenticationManagerBean() throws Exception {
-        AuthenticationManager manager = super.authenticationManagerBean();
-        return manager;
+        return super.authenticationManagerBean();
     }
 
     @Bean

@@ -20,5 +20,5 @@ public class RoleEntity extends BaseModel {
     private RoleName name;
 
     @Column(name = "removed")
-    private String removed;
+    private Boolean removed;
 }

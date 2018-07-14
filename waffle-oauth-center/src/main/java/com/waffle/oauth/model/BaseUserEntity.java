@@ -43,6 +43,18 @@ public class BaseUserEntity extends BaseTimedModel {
     private String phone;
 
     /**
+     * 被删除的
+     */
+    @Column(name = "removed")
+    private Boolean removed = false;
+
+    /**
+     * 激活返回true
+     */
+    @Column(name = "activated")
+    private Boolean activated = false;
+
+    /**
      * 加密后的密钥
      */
     @Column(name = "secret")
