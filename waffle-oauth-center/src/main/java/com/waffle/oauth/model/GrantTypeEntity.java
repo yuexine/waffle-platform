@@ -1,8 +1,10 @@
 package com.waffle.oauth.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.waffle.oauth.constant.TableName;
 import com.waffle.oauth.model.support.GrantTypeName;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 
@@ -12,7 +14,8 @@ import javax.persistence.*;
  * @author yuexin
  * @since 1.0
  */
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name = TableName.CLIENT_Grant_TYPE)
 public class GrantTypeEntity extends BaseModel {
@@ -38,6 +41,7 @@ public class GrantTypeEntity extends BaseModel {
     /**
      * 对应的客户端详细
      */
-    @ManyToOne(cascade = CascadeType.ALL)
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
     private ClientDetailEntity clientDetails;
 }

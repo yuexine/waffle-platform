@@ -1,7 +1,8 @@
 package com.waffle.oauth.model;
 
 import com.waffle.oauth.constant.TableName;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 
@@ -11,7 +12,8 @@ import javax.persistence.*;
  * @author yuexin
  * @since 1.0
  */
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name = TableName.CLIENT_ADDITIONAL_INFORMATION)
 public class ClientAdditionalInformationEntity extends BaseTimedModel {
@@ -37,6 +39,6 @@ public class ClientAdditionalInformationEntity extends BaseTimedModel {
     /**
      * 对应客户端详细
      */
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private ClientDetailEntity clientDetails;
 }

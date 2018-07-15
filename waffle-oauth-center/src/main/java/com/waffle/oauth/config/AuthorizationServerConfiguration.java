@@ -1,6 +1,7 @@
 package com.waffle.oauth.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -25,15 +26,16 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
 
     private final AuthenticationManager authenticationManager;
 
-//    @Autowired
-//    private RedisConnectionFactory redisConnectionFactory;
-
-    private final ClientDetailsService clientDetailsService;
+    private final ApplicationProperties applicationProperties;
 
     @Autowired
-    public AuthorizationServerConfiguration(AuthenticationManager authenticationManager, ClientDetailsService clientDetailsService) {
+    @Qualifier(value = "localClientDetailsService")
+    private ClientDetailsService clientDetailsService;
+
+    @Autowired
+    public AuthorizationServerConfiguration(AuthenticationManager authenticationManager, ApplicationProperties applicationProperties) {
         this.authenticationManager = authenticationManager;
-        this.clientDetailsService = clientDetailsService;
+        this.applicationProperties = applicationProperties;
     }
 
     @Override
@@ -43,7 +45,7 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-        clients.withClientDetails(clientDetailsService).build();
+        clients.withClientDetails(clientDetailsService);
     }
 
     @Override
@@ -63,25 +65,8 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
 
     @Bean
     public JwtAccessTokenConverter accessTokenConverter() {
-        JwtAccessTokenConverter accessTokenConverter = new JwtAccessTokenConverter() {
-            /***
-             * 重写增强token方法,用于自定义一些token返回的信息
-             */
-//            @Override
-//            public OAuth2AccessToken enhance(OAuth2AccessToken accessToken, OAuth2Authentication authentication) {
-//                String userName = authentication.getUserAuthentication().getName();
-//                ClientUserEntity user = (ClientUserEntity) authentication.getUserAuthentication().getPrincipal();// 与登录时候放进去的UserDetail实现类一直查看link{SecurityConfiguration}
-//                /** 自定义一些token属性 ***/
-//                final Map<String, Object> additionalInformation = new HashMap<>();
-//                additionalInformation.put("userName", userName);
-//                additionalInformation.put("roles", user.getAuthorities());
-//                ((DefaultOAuth2AccessToken) accessToken).setAdditionalInformation(additionalInformation);
-//                OAuth2AccessToken enhancedToken = super.enhance(accessToken, authentication);
-//                return enhancedToken;
-//            }
-
-        };
-        accessTokenConverter.setSigningKey("123");// 测试用,资源服务使用相同的字符达到一个对称加密的效果,生产时候使用RSA非对称加密方式
+        JwtAccessTokenConverter accessTokenConverter = new JwtAccessTokenConverter();
+        accessTokenConverter.setSigningKey(applicationProperties.getResourceSignKey());
         return accessTokenConverter;
     }
 

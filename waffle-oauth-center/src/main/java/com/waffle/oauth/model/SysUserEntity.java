@@ -1,7 +1,8 @@
 package com.waffle.oauth.model;
 
 import com.waffle.oauth.constant.TableName;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
@@ -11,7 +12,8 @@ import java.io.Serializable;
 /**
  * @author yuexin
  */
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name = TableName.SYS_USER)
 public class SysUserEntity extends BaseTimedModel implements Serializable {

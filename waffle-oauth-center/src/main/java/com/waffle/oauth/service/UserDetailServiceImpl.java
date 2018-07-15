@@ -34,7 +34,7 @@ import java.util.stream.Collectors;
  * @since 1.0
  */
 @Slf4j
-@Service
+@Service(value = "localClientDetailsService")
 public class UserDetailServiceImpl implements UserService, ClientUserService, UserDetailsService, ClientDetailsService {
 
     private final BaseUserRepository baseUserRepository;
@@ -71,7 +71,7 @@ public class UserDetailServiceImpl implements UserService, ClientUserService, Us
     }
 
     @Override
-    @Transactional(rollbackFor = Exception.class)
+    @Transactional
     public ClientDetails loadClientByClientId(String clientId) throws ClientRegistrationException {
         log.debug("load client start, id is {}", clientId);
         Optional<ClientDetailEntity> clientDetailsFromDb = clientDetailsRepository.findByClientId(clientId);

@@ -7,15 +7,29 @@ public enum ScopeName {
     /**
      *
      */
-    READ,
+    READ("read"),
 
     /**
      *
      */
-    WRITE,
+    WRITE("write"),
 
     /**
      *
      */
-    TRUST;
+    TRUST("trust");
+
+    private String value;
+
+    ScopeName(String value) {
+        this.value = value;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
 }

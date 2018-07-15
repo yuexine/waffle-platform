@@ -1,7 +1,8 @@
 package com.waffle.oauth.model;
 
 import com.waffle.oauth.constant.TableName;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
@@ -12,7 +13,8 @@ import javax.persistence.*;
  * @author yuexin
  * @since 1.0
  */
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name = TableName.CLIENT_REDIRECT_URI)
 public class RedirectUriEntity extends BaseTimedModel {
@@ -39,6 +41,6 @@ public class RedirectUriEntity extends BaseTimedModel {
     /**
      * 对应的客户端详细
      */
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private ClientDetailEntity clientDetails;
 }

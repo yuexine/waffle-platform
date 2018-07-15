@@ -1,7 +1,8 @@
 package com.waffle.oauth.model;
 
 import com.waffle.oauth.constant.TableName;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -12,7 +13,8 @@ import java.util.Set;
  * @author yuexin
  * @since 1.0
  */
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name = TableName.RESOURCE)
 public class ResourceEntity extends BaseModel {

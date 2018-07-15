@@ -1,6 +1,7 @@
 package com.waffle.oauth.model;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
@@ -16,7 +17,8 @@ import java.util.Date;
  * @author yuexin
  * @since 1.0
  */
-@Data
+@Getter
+@Setter
 @MappedSuperclass
 public abstract class BaseTimedModel extends BaseModel {
 

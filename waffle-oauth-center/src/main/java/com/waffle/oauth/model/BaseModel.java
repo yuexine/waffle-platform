@@ -1,6 +1,7 @@
 package com.waffle.oauth.model;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,7 +13,8 @@ import javax.persistence.MappedSuperclass;
  *
  * @author yuexin
  */
-@Data
+@Getter
+@Setter
 @MappedSuperclass
 public abstract class BaseModel {
 

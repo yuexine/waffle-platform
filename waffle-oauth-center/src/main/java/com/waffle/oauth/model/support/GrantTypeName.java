@@ -4,19 +4,22 @@ package com.waffle.oauth.model.support;
  * @author yuexin
  */
 public enum GrantTypeName {
+    /**
+     * 客户端授权
+     */
     CLIENT_CREDENTIALS("client_credentials");
 
-    GrantTypeName(String name) {
-        this.name = name;
+    GrantTypeName(String value) {
+        this.value = value;
     }
 
-    private String name;
+    private String value;
 
-    public String getName() {
-        return name;
+    public String getValue() {
+        return value;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setValue(String value) {
+        this.value = value;
     }
 }

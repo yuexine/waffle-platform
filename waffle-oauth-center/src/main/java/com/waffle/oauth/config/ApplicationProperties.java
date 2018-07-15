@@ -18,4 +18,7 @@ public class ApplicationProperties {
     private Integer refreshTokenValiditySeconds = 12 * 60 * 60;
 
     private Integer accessTokenValiditySeconds = 12 * 60 * 60;
+
+    private String resourceSignKey = "yx92tb%Tg365";
+
 }

@@ -1,7 +1,8 @@
 package com.waffle.oauth.model;
 
 import com.waffle.oauth.constant.TableName;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -12,7 +13,8 @@ import java.util.Set;
  * @author yuexin
  * @since 1.0
  */
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name = TableName.CLIENT_DETAIL)
 public class ClientDetailEntity extends BaseTimedModel {
@@ -32,25 +34,25 @@ public class ClientDetailEntity extends BaseTimedModel {
     /**
      * 客户端scope
      */
-    @OneToMany(mappedBy = "clientDetails")
+    @OneToMany(mappedBy = "clientDetails", fetch = FetchType.EAGER)
     private Set<ScopeEntity> scopes;
 
     /**
      * 为当前客户端接入的资源
      */
-    @ManyToMany(mappedBy = "clientDetailsSet")
+    @ManyToMany(mappedBy = "clientDetailsSet", fetch = FetchType.EAGER)
     private Set<ResourceEntity> resource;
 
     /**
      * 客户端支持的授权类型
      */
-    @OneToMany(mappedBy = "clientDetails")
+    @OneToMany(mappedBy = "clientDetails", fetch = FetchType.EAGER)
     private Set<GrantTypeEntity> authorizedGrantTypeNames;
 
     /**
      * 客户端受信任的重定向URL
      */
-    @OneToMany(mappedBy = "clientDetails")
+    @OneToMany(mappedBy = "clientDetails", fetch = FetchType.EAGER)
     private Set<RedirectUriEntity> registeredRedirectUris;
 
     /**
@@ -74,7 +76,7 @@ public class ClientDetailEntity extends BaseTimedModel {
     /**
      * 客户端基本信息
      */
-    @OneToOne(mappedBy = "clientDetail", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "clientDetail", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private ClientEntity client;
 
 }

@@ -1,7 +1,8 @@
 package com.waffle.oauth.model;
 
 import com.waffle.oauth.constant.TableName;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -13,7 +14,8 @@ import java.util.Set;
  * @author yuexin
  * @since 1.0
  */
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name = TableName.BASE_USER)
 public class BaseUserEntity extends BaseTimedModel {
@@ -69,12 +71,12 @@ public class BaseUserEntity extends BaseTimedModel {
     /**
      * 对应的系统用户
      */
-    @OneToOne(mappedBy = "user")
+    @OneToOne(mappedBy = "user", fetch = FetchType.LAZY)
     private SysUserEntity sysUser;
 
     /**
      * 对应的客户端用户
      */
-    @OneToOne(mappedBy = "user")
+    @OneToOne(mappedBy = "user", fetch = FetchType.LAZY)
     private ClientUserEntity clientUser;
 }

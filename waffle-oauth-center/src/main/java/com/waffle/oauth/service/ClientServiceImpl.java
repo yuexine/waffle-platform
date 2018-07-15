@@ -12,8 +12,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.HashSet;
 import java.util.Optional;
 
 /**
@@ -57,35 +57,48 @@ public class ClientServiceImpl implements ClientService {
 
 
     @Override
+    @Transactional
     public ClientDetailEntity addClient(ClientDescription clientDescription) {
         ClientDetailEntity clientDetails = clientDescription.build();
-        ClientEntity client = createClient(clientDescription.getName());
-        clientDetails.setClient(client);
         clientDetails.setAccessTokenValiditySeconds(getAccessTokenValiditySeconds());
-        HashSet<ScopeEntity> scopes = scopeRepository.findByNameAndRemovedFalse(ScopeName.READ).map(s -> {
-            HashSet<ScopeEntity> set = new HashSet<>(1);
-            set.add(s);
-            return set;
-        }).orElseThrow(IllegalStateException::new);
-        clientDetails.setScopes(scopes);
-        clientDetails.setAuthorizedGrantTypeNames(grantTypeRepository.findByType(GrantTypeName.CLIENT_CREDENTIALS).map(s -> {
-            HashSet<GrantTypeEntity> set = new HashSet<>(1);
-            set.add(s);
-            return set;
-        }).orElseThrow(IllegalStateException::new));
         clientDetails.setRefreshTokenValiditySeconds(getRefreshTokenValiditySeconds());
         String secret = generator.generate();
-        log.debug("ClientId {} 's secret is {}", clientDescription.getClientId(), secret);
         clientDetails.setClientSecret(passwordEncoder.encode((secret)));
-        return clientDetailsRepository.save(clientDetails);
+        clientDetails = clientDetailsRepository.save(clientDetails);
+        log.debug("ClientId {} 's secret is {}", clientDescription.getClientId(), secret);
+
+        createClient(clientDescription.getName(), clientDetails);
+        createScope(clientDetails);
+        createAuthorizedGrantType(clientDetails);
+
+        return clientDetails;
     }
 
-    private ClientEntity createClient(String name) {
+    private void createAuthorizedGrantType(ClientDetailEntity clientDetails) {
+        GrantTypeEntity grantType = new GrantTypeEntity();
+        grantType.setClientDetails(clientDetails);
+        grantType.setRemoved(false);
+        grantType.setRemark("客户端授权");
+        grantType.setType(GrantTypeName.CLIENT_CREDENTIALS);
+        grantTypeRepository.save(grantType);
+    }
+
+    private void createScope(ClientDetailEntity clientDetails) {
+        ScopeEntity scope = new ScopeEntity();
+        scope.setAutoApprove(false);
+        scope.setClientDetails(clientDetails);
+        scope.setName(ScopeName.READ);
+        scope.setRemoved(false);
+        scopeRepository.save(scope);
+    }
+
+    private ClientEntity createClient(String name, ClientDetailEntity clientDetails) {
         ClientEntity clientEntity = new ClientEntity();
-        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getCredentials();
+        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         ClientUserEntity clientUser = baseUserRepository.findByLoginAndRemovedFalse(userDetails.getUsername()).map(BaseUserEntity::getClientUser).orElseThrow(NullPointerException::new);
         clientEntity.setClientUser(clientUser);
         clientEntity.setName(name);
+        clientEntity.setClientDetail(clientDetails);
         return clientRepository.save(clientEntity);
     }
 

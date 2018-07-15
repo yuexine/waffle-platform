@@ -2,7 +2,8 @@ package com.waffle.oauth.model;
 
 import com.waffle.oauth.constant.TableName;
 import com.waffle.oauth.model.support.RoleName;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,7 +12,8 @@ import javax.persistence.Table;
 /**
  * @author yuexin
  */
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name = TableName.ROLE)
 public class RoleEntity extends BaseModel {

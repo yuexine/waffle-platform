@@ -52,7 +52,7 @@ public class ClientDetailsAdapter implements ClientDetails {
     public Set<String> getScope() {
         return clientDetail.getScopes().stream()
                 .filter(scope -> !scope.getRemoved())
-                .map(scope -> scope.getName().name())
+                .map(scope -> scope.getName().getValue())
                 .collect(Collectors.toSet());
     }
 
@@ -60,7 +60,7 @@ public class ClientDetailsAdapter implements ClientDetails {
     public Set<String> getAuthorizedGrantTypes() {
         return clientDetail.getAuthorizedGrantTypeNames().stream()
                 .filter(grantType -> !grantType.getRemoved())
-                .map(grantType -> grantType.getType().name())
+                .map(grantType -> grantType.getType().getValue())
                 .collect(Collectors.toSet());
     }
 
