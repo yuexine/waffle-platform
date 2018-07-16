@@ -32,9 +32,9 @@ public abstract class BaseTimedModel extends BaseModel {
 
     @Column(name = "created_by")
     @CreatedBy
-    private Long createdBy;
+    private String createdBy;
 
     @Column(name = "updated_by")
     @LastModifiedBy
-    private Long updatedBy;
+    private String updatedBy;
 }

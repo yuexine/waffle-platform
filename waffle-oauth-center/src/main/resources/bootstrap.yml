@@ -5,3 +5,4 @@ spring:
       name: sso
       profile: dev
       label: master
+      enabled: false

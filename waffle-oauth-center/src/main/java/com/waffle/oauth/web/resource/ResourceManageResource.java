@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 /**
- * 资源管理
+ * 资源管理接口
+ * 1. 创建新的资源
+ * 2. 获取资源描述
  *
  * @author yuexin
  * @since 1.0
