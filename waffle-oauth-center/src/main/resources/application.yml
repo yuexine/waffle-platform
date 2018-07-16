@@ -25,8 +25,9 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
     show-sql: true
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
 # log
 logging:
   level:

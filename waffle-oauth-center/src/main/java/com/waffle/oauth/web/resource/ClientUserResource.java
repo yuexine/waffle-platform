@@ -16,7 +16,7 @@ import javax.validation.Valid;
  * 客户端端用户接口
  *
  * @author yuexin
- * @since
+ * @since 1.0
  */
 @Slf4j
 @RestController
@@ -29,6 +29,12 @@ public class ClientUserResource extends BaseResource {
         this.clientUserService = clientUserService;
     }
 
+    /**
+     * 注册客户端用户
+     *
+     * @param clientUser
+     * @return
+     */
     @PostMapping("client/user")
     public ClientUserWrapper registerClientUser(@RequestBody @Valid ClientUserDescription clientUser) {
         ClientUserEntity clientUserEntity = clientUserService.registerClientUser(clientUser.getUsername(), clientUser.getEmail(), clientUser.getPassword(), clientUser.getPhone());

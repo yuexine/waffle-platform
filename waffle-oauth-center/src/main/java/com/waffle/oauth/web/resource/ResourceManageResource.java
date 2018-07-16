@@ -53,6 +53,7 @@ public class ResourceManageResource extends BaseResource {
     public ResponseEntity registerResource(@RequestBody @Valid ResourceDescription rd, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             log.error("Oh, No >> {}", bindingResult.getAllErrors());
+            return ResponseEntity.badRequest().body(bindingResult.getAllErrors());
         }
         ResourceEntity re = resourceService.registerResource(rd.getName(), rd.getResourceId(), rd.getUri());
         return ResponseEntity.ok().body(re.getId());

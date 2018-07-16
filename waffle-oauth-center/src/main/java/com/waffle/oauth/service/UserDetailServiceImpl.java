@@ -84,7 +84,7 @@ public class UserDetailServiceImpl implements UserService, ClientUserService, Us
     @Override
     @Transactional(rollbackFor = Exception.class)
     public BaseUserEntity registerUser(String username, String password, String phone, String email) {
-        BaseUserEntity baseUser = buildBaseUser(username, password, email);
+        BaseUserEntity baseUser = buildBaseUser(username, password, email, phone);
         choiceRoles(baseUser, RoleName.ROLE_USER);
         return baseUserRepository.save(baseUser);
     }
@@ -92,7 +92,7 @@ public class UserDetailServiceImpl implements UserService, ClientUserService, Us
     @Override
     @Transactional(rollbackFor = Exception.class)
     public ClientUserEntity registerClientUser(String username, String email, String password, String phone) {
-        BaseUserEntity baseUser = buildBaseUser(username, password, email);
+        BaseUserEntity baseUser = buildBaseUser(username, password, email, phone);
         choiceRoles(baseUser, RoleName.ROLE_CLIENT_USER);
         ClientUserEntity clientUserEntity = new ClientUserEntity();
         clientUserEntity.setUser(baseUser);
@@ -108,11 +108,12 @@ public class UserDetailServiceImpl implements UserService, ClientUserService, Us
         baseUser.setRoles(roles);
     }
 
-    private BaseUserEntity buildBaseUser(String username, String password, String email) {
+    private BaseUserEntity buildBaseUser(String username, String password, String email, String phone) {
         BaseUserEntity baseUser = new BaseUserEntity();
         baseUser.setEmail(email);
         baseUser.setLogin(username);
         baseUser.setName(username);
+        baseUser.setPhone(phone);
         baseUser.setActivated(true);
         baseUser.setSecret(password);
         return baseUser;
