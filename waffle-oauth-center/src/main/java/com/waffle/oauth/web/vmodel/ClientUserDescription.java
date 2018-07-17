@@ -1,7 +1,8 @@
 package com.waffle.oauth.web.vmodel;
 
-import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * 客户端用户描述对象
@@ -9,8 +10,10 @@ import lombok.EqualsAndHashCode;
  * @author yuexin
  * @since 1.0
  */
-@Data
+@Getter
+@Setter
 @EqualsAndHashCode(callSuper = true)
 public class ClientUserDescription extends UserDescription {
 
+    private static final long serialVersionUID = 2536558152480049656L;
 }

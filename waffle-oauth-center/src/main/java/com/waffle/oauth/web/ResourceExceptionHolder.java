@@ -6,10 +6,10 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
- * 异常处理
+ * Holder Resource Aspect Exception And Response To Client
  *
  * @author yuexin
- * @since
+ * @since 1.0
  */
 @Slf4j
 @ControllerAdvice(basePackageClasses = ResourceExceptionHolder.class)

@@ -18,6 +18,8 @@ import java.io.Serializable;
 @Getter
 public class ClientDetailWrapper implements Wrapper, Serializable {
 
+    private static final long serialVersionUID = -2058339126376113508L;
+
     @JsonIgnore
     private ClientEntity client;
 

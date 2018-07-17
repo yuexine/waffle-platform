@@ -1,6 +1,7 @@
 package com.waffle.oauth.web.vmodel;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
@@ -8,8 +9,11 @@ import java.io.Serializable;
 /**
  * @author yuexin
  */
-@Data
+@Getter
+@Setter
 public class ResourceDescription implements Serializable {
+
+    private static final long serialVersionUID = -5844550686099140651L;
 
     /**
      * 资源名

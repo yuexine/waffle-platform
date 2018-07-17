@@ -8,9 +8,9 @@ package com.waffle.oauth.web.wrapper;
 public interface Wrapper {
 
     /**
-     * 过滤key
+     * 过滤字段返回
      *
-     * @param names
+     * @param names 过滤的字段名
      */
     void filter(String... names);
 

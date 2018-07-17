@@ -1,6 +1,7 @@
 package com.waffle.oauth.web.vmodel;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.NotNull;
@@ -9,8 +10,11 @@ import java.io.Serializable;
 /**
  * @author yuexin
  */
-@Data
+@Getter
+@Setter
 public class UserDescription implements Serializable {
+
+    private static final long serialVersionUID = -4695222652797617033L;
 
     @Length(min = 5, max = 50, message = "用户名长度为5到50个字符")
     private String username;

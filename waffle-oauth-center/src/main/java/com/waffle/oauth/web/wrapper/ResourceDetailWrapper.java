@@ -17,6 +17,8 @@ import java.io.Serializable;
 @Setter
 public class ResourceDetailWrapper implements Wrapper, Serializable {
 
+    private static final long serialVersionUID = 7033204998124789595L;
+
     @JsonIgnore
     private ResourceEntity resourceEntity;
 
