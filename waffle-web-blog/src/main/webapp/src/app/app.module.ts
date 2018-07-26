@@ -5,10 +5,12 @@ import {AppComponent} from './app.component';
 import {FormsModule} from "@angular/forms";
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { OverviewComponent } from './overview/overview.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    OverviewComponent,
   ],
   imports: [
     BrowserModule,
