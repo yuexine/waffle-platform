@@ -13,7 +13,7 @@ public class JsonSerializer {
     private final ObjectMapper mapper = new ObjectMapper();
     private final JacksonJsonFilter filter = new JacksonJsonFilter();
 
-    {
+    public JsonSerializer() {
         mapper.setFilterProvider(filter);
     }
 
@@ -25,7 +25,7 @@ public class JsonSerializer {
             filter.include(clazz, includeField.split(","));
         }
         if (!StringUtils.isEmpty(filterField)) {
-            filter.include(clazz, filterField.split(","));
+            filter.filter(clazz, filterField.split(","));
         }
         mapper.addMixIn(clazz, filter.getClass());
     }

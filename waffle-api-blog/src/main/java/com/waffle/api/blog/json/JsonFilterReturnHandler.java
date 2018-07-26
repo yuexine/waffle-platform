@@ -1,20 +1,32 @@
 package com.waffle.api.blog.json;
 
+import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
+import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.NativeWebRequest;
 import org.springframework.web.method.support.HandlerMethodReturnValueHandler;
 import org.springframework.web.method.support.ModelAndViewContainer;
+import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter;
+import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
 import javax.servlet.http.HttpServletResponse;
 import java.lang.annotation.Annotation;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
 
 /**
  * @author yuexin
  * @since 1.0
  */
-public class JsonFilterReturnHandler implements HandlerMethodReturnValueHandler {
+@Component
+public class JsonFilterReturnHandler implements HandlerMethodReturnValueHandler, BeanPostProcessor {
+
+    private List<ResponseBodyAdvice<Object>> advices = new ArrayList<>();
+
     @Override
     public boolean supportsReturnType(MethodParameter returnType) {
         return returnType.getMethodAnnotation(JSON.class) != null;
@@ -41,5 +53,34 @@ public class JsonFilterReturnHandler implements HandlerMethodReturnValueHandler 
         assert response != null;
         response.setContentType(MediaType.APPLICATION_JSON_UTF8_VALUE);
         response.getWriter().write(jsonSerializer.toJson(returnValue));
+    }
+
+    @Override
+    public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
+        return bean;
+    }
+
+    @Override
+    public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
+        if (bean instanceof ResponseBodyAdvice) {
+            advices.add((ResponseBodyAdvice<Object>) bean);
+        } else if (bean instanceof RequestMappingHandlerAdapter) {
+            List<HandlerMethodReturnValueHandler> handlers = new ArrayList<>(
+                    Objects.requireNonNull(((RequestMappingHandlerAdapter) bean).getReturnValueHandlers()));
+            JsonFilterReturnHandler jsonHandler = null;
+            for (int i = 0; i < handlers.size(); i++) {
+                HandlerMethodReturnValueHandler handler = handlers.get(i);
+                if (handler instanceof JsonFilterReturnHandler) {
+                    jsonHandler = (JsonFilterReturnHandler) handler;
+                    break;
+                }
+            }
+            if (jsonHandler != null) {
+                handlers.remove(jsonHandler);
+                handlers.add(0, jsonHandler);
+                ((RequestMappingHandlerAdapter) bean).setReturnValueHandlers(handlers);
+            }
+        }
+        return bean;
     }
 }

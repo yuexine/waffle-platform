@@ -32,7 +32,6 @@ public class JacksonJsonFilter extends FilterProvider {
         return new SimpleBeanPropertyFilter() {
             @Override
             public void serializeAsField(Object pojo, JsonGenerator jgen, SerializerProvider provider, PropertyWriter writer) throws Exception {
-                super.serializeAsField(pojo, jgen, provider, writer);
                 if (apply(pojo.getClass(), writer.getName())) {
                     writer.serializeAsField(pojo, jgen, provider);
                 } else if (!jgen.canOmitFields()) {
@@ -55,11 +54,11 @@ public class JacksonJsonFilter extends FilterProvider {
         return false;
     }
 
-    public void include(Class<?> clazz, String... fields) {
+    void include(Class<?> clazz, String... fields) {
         addToMap(includeMap, clazz, fields);
     }
 
-    public void filter(Class<?> clazz, String... fields) {
+    void filter(Class<?> clazz, String... fields) {
         addToMap(filterMap, clazz, fields);
     }
 
