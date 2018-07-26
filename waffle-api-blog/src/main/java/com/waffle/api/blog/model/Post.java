@@ -2,7 +2,8 @@ package com.waffle.api.blog.model;
 
 import com.waffle.api.blog.constant.CommonConstant;
 import com.waffle.api.blog.model.support.PostStatus;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
@@ -12,7 +13,8 @@ import java.util.Set;
 /**
  * @author yuexin
  */
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name = CommonConstant.PREFIX + "posts")
 public class Post extends AbstractModel {

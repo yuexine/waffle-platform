@@ -2,7 +2,7 @@ package com.waffle.api.blog.service.common;
 
 import com.waffle.api.blog.model.Post;
 import com.waffle.api.blog.web.model.PostBuilder;
-import com.waffle.api.blog.web.model.PostCondition;
+import com.waffle.api.blog.web.model.PostSearch;
 import org.springframework.data.domain.Page;
 
 import java.util.Optional;
@@ -14,7 +14,7 @@ public interface PostService {
 
     Optional<Post> findPostById(Long postId);
 
-    Page<Post> searchPostByCondition(PostCondition postCondition);
+    Page<Post> searchPostByCondition(PostSearch postCondition);
 
     Optional<Post> addPost(PostBuilder postBuilder);
 
