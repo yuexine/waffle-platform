@@ -3,7 +3,7 @@ package com.waffle.api.blog.service.common;
 import com.waffle.api.blog.model.Post;
 import com.waffle.api.blog.repository.jpa.PostRepository;
 import com.waffle.api.blog.web.model.PostBuilder;
-import com.waffle.api.blog.web.model.PostCondition;
+import com.waffle.api.blog.web.model.PostSearch;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
@@ -29,7 +29,7 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public Page<Post> searchPostByCondition(PostCondition postCondition) {
+    public Page<Post> searchPostByCondition(PostSearch postCondition) {
 
         return null;
     }

@@ -1,6 +1,7 @@
 package com.waffle.api.blog.model;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
@@ -14,10 +15,13 @@ import java.util.Date;
 /**
  * @author yuexin
  */
-@Data
+@Getter
+@Setter
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
 public abstract class AbstractModel implements Serializable {
+
+    private static final long serialVersionUID = -1312422565256165033L;
 
     @Id
     @Column(name = "id")
