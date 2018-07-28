@@ -11,6 +11,8 @@ import { NavComponent } from './common/nav/nav.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeModule } from './home/home.module';
 
+import {MatToolbarModule} from '@angular/material/toolbar';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,6 +23,7 @@ import { HomeModule } from './home/home.module';
     BrowserModule,
     FormsModule,
     BrowserAnimationsModule,
+    MatToolbarModule,
     AppRoutingModule,
     HomeModule,
   ],
