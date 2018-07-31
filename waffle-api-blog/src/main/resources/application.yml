@@ -4,7 +4,7 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
-    enabled: true
+    enabled: false
 spring:
   application:
     name: waffle-api-blog
@@ -53,5 +53,5 @@ application:
     driver-class: com.mysql.jdbc.Driver
 logging:
   level:
-    -root: debug
+    -root: info
     -com.netflix.hystrix.AbstractCommand: debug

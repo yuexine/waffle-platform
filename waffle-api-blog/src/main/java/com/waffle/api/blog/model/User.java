@@ -1,7 +1,8 @@
 package com.waffle.api.blog.model;
 
 import com.waffle.api.blog.constant.CommonConstant;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,7 +11,8 @@ import javax.persistence.Table;
 /**
  * @author yuexin
  */
-@Data
+@Setter
+@Getter
 @Entity
 @Table(name = CommonConstant.PREFIX + "user")
 public class User extends AbstractModel {

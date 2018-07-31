@@ -33,7 +33,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
-        <docker.image.prefix>wuyuexin</docker.image.prefix>
+        <docker.image.prefix>120.26.131.123:8085</docker.image.prefix>
         <google.guava.version>18.0</google.guava.version>
         <okhttp.version>3.10.0</okhttp.version>
         <netty.version>4.1.25.Final</netty.version>

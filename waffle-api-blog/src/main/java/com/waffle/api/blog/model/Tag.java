@@ -2,7 +2,8 @@ package com.waffle.api.blog.model;
 
 import com.waffle.api.blog.constant.CommonConstant;
 import com.waffle.api.blog.model.support.TagType;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -14,7 +15,8 @@ import java.util.Set;
  *
  * @author yuexin
  */
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name = CommonConstant.PREFIX + "tags")
 public class Tag extends AbstractModel {

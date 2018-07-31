@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.util.Date;
+import java.util.List;
 
 /**
  * @author yuexin
@@ -13,9 +15,25 @@ import java.io.Serializable;
  */
 @Getter
 @Setter
-public class PostWrapper implements Wrapper, Serializable {
+public class PostWrapper implements Wrapper, Ordered, Serializable {
 
     private static final long serialVersionUID = 3777397660531375246L;
+
+    private Long id;
+
+    private String title;
+
+    private String summary;
+
+    private String keywords;
+
+    private List<String> imageUrls;
+
+    private String content;
+
+    private Date createdTime;
+
+    private Date updatedTime;
 
     @JsonIgnore
     private Post post;
@@ -25,4 +43,8 @@ public class PostWrapper implements Wrapper, Serializable {
     }
 
 
+    @Override
+    public int getOrder() {
+        return 0;
+    }
 }

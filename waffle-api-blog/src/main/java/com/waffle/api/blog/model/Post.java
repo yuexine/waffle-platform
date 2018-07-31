@@ -35,6 +35,7 @@ public class Post extends AbstractModel {
     @Type(type = "text")
     private String keywords;
 
+
     @Column(nullable = false)
     @Enumerated(EnumType.ORDINAL)
     private PostStatus status;

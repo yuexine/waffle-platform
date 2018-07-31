@@ -4,10 +4,12 @@ import com.waffle.api.blog.model.Post;
 import com.waffle.api.blog.repository.jpa.PostRepository;
 import com.waffle.api.blog.web.model.PostBuilder;
 import com.waffle.api.blog.web.model.PostSearch;
+import com.waffle.api.blog.web.wrapper.PostWrapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -50,6 +52,21 @@ public class PostServiceImpl implements PostService {
     @Override
     public Optional<Post> unPublishPost(Long... postId) {
         return Optional.empty();
+    }
+
+    @Override
+    public List<PostWrapper> findRecommendPost(int count) {
+        return null;
+    }
+
+    @Override
+    public List<PostWrapper> findPopularPost(int count) {
+        return null;
+    }
+
+    @Override
+    public List<PostWrapper> findLatestPost(int count) {
+        return null;
     }
 
 }

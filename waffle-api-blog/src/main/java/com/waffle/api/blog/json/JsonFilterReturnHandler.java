@@ -4,6 +4,8 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
+import org.springframework.http.server.ServletServerHttpRequest;
+import org.springframework.http.server.ServletServerHttpResponse;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.NativeWebRequest;
 import org.springframework.web.method.support.HandlerMethodReturnValueHandler;
@@ -11,6 +13,7 @@ import org.springframework.web.method.support.ModelAndViewContainer;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.lang.annotation.Annotation;
 import java.util.ArrayList;
@@ -36,8 +39,16 @@ public class JsonFilterReturnHandler implements HandlerMethodReturnValueHandler,
     public void handleReturnValue(Object returnValue, MethodParameter returnType, ModelAndViewContainer mavContainer, NativeWebRequest webRequest) throws Exception {
         mavContainer.setRequestHandled(true);
 
-        HttpServletResponse response = webRequest.getNativeResponse(HttpServletResponse.class);
+        for (int i = 0; i < advices.size(); i++) {
+            ResponseBodyAdvice<Object> ad = advices.get(i);
+            if (ad.supports(returnType, null)) {
+                returnValue = ad.beforeBodyWrite(returnValue, returnType, MediaType.APPLICATION_JSON_UTF8, null,
+                        new ServletServerHttpRequest(Objects.requireNonNull(webRequest.getNativeRequest(HttpServletRequest.class))),
+                        new ServletServerHttpResponse(Objects.requireNonNull(webRequest.getNativeResponse(HttpServletResponse.class))));
+            }
+        }
 
+        HttpServletResponse response = webRequest.getNativeResponse(HttpServletResponse.class);
         Annotation[] annotations = returnType.getMethodAnnotations();
 
         JsonSerializer jsonSerializer = new JsonSerializer();
