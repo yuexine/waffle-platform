@@ -1,6 +1,6 @@
 package com.waffle.api.blog.web.model;
 
-import com.waffle.api.blog.model.FileMetaInfo;
+import com.waffle.api.blog.model.Document;
 import com.waffle.api.blog.service.common.file.FileStorageInfo;
 
 /**
@@ -8,7 +8,7 @@ import com.waffle.api.blog.service.common.file.FileStorageInfo;
  */
 public class DefaultFileDescription implements FileDescription {
 
-    public DefaultFileDescription(FileStorageInfo fileStorageInfo, FileMetaInfo fileMetaInfo) {
+    public DefaultFileDescription(FileStorageInfo fileStorageInfo, Document document) {
 
     }
 }

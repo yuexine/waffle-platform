@@ -1,6 +1,6 @@
 package com.waffle.api.blog.service.common.file;
 
-import com.waffle.api.blog.model.FileMetaInfo;
+import com.waffle.api.blog.model.Document;
 import com.waffle.api.blog.model.support.FileType;
 
 import java.io.InputStream;
@@ -18,13 +18,13 @@ public class ResolvedFile {
 
     private FileType fileType;
 
-    public FileMetaInfo getFileMetaInfo(String path) {
-        FileMetaInfo fileMetaInfo = new FileMetaInfo();
-        fileMetaInfo.setSize(getFileSize());
-        fileMetaInfo.setName(getFileName());
-        fileMetaInfo.setType(getFileType());
-        fileMetaInfo.setPath(path);
-        return fileMetaInfo;
+    public Document getFileMetaInfo(String path) {
+        Document document = new Document();
+        document.setSize(getFileSize());
+        document.setName(getFileName());
+        document.setType(getFileType());
+        document.setRelativePosition(path);
+        return document;
     }
 
     public String getFileName() {

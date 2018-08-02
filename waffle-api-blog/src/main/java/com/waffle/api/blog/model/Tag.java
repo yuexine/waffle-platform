@@ -1,7 +1,6 @@
 package com.waffle.api.blog.model;
 
 import com.waffle.api.blog.constant.CommonConstant;
-import com.waffle.api.blog.model.support.TagType;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,7 +17,7 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
-@Table(name = CommonConstant.PREFIX + "tags")
+@Table(name = CommonConstant.PREFIX + "tag")
 public class Tag extends AbstractModel {
 
     public static final long serialVersionUID = 567834353946L;
@@ -26,14 +25,13 @@ public class Tag extends AbstractModel {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "type")
-    @Enumerated(EnumType.ORDINAL)
-    private TagType type;
-
-    @ManyToOne
-    private User user;
-
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = CommonConstant.PREFIX + "tags")
     private Set<Post> posts = new HashSet<>();
 
+    public Tag(String name) {
+        setName(name);
+    }
+
+    public Tag() {
+    }
 }

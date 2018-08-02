@@ -40,6 +40,7 @@ public class PostWrapper implements Wrapper, Ordered, Serializable {
 
     public PostWrapper(Post post) {
         this.post = post;
+        this.id = post.getId();
     }
 
 
