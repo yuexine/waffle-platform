@@ -29,7 +29,7 @@ public class Tag extends AbstractModel {
     private Set<Post> posts = new HashSet<>();
 
     public Tag(String name) {
-        setName(name);
+        setName(name.trim());
     }
 
     public Tag() {

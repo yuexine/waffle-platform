@@ -43,5 +43,4 @@ public abstract class AbstractModel implements Serializable {
     @Column(name = "updated_by")
     @LastModifiedBy
     private Long updatedBy;
-
 }

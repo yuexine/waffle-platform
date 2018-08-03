@@ -1,9 +1,11 @@
 package com.waffle.api.blog.service.common.file;
 
+import java.io.InputStream;
+
 /**
  * @author yuexin
  */
 public interface FileStorage {
 
-    FileStorageInfo storeFile(ResolvedFile resolvedFile);
+    StorageFile storeFile(String name, InputStream inputStream);
 }

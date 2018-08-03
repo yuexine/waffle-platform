@@ -4,7 +4,7 @@ import com.waffle.api.blog.model.AbstractModel;
 import com.waffle.api.blog.model.Post;
 import com.waffle.api.blog.service.common.PostService;
 import com.waffle.api.blog.web.description.PostDescription;
-import com.waffle.api.blog.web.model.PostAdapter;
+import com.waffle.api.blog.web.model.PostBuilder;
 import com.waffle.api.blog.web.model.PostSearch;
 import com.waffle.api.blog.web.wrapper.PostIndex;
 import com.waffle.api.blog.web.wrapper.PostWrapper;
@@ -72,7 +72,7 @@ public class PostResource {
      *
      * @return
      */
-    @GetMapping(path = "post/compose")
+    @GetMapping(path = "post/index")
     public PostIndex getIndex() {
         List<PostWrapper> recommend = postService.findRecommendPost(2);
         List<PostWrapper> popular = postService.findPopularPost(3);
@@ -86,8 +86,8 @@ public class PostResource {
             bindingResult.getAllErrors().forEach(objectError -> log.error(objectError.getDefaultMessage()));
             throw new IllegalArgumentException();
         }
-        PostAdapter postAdapter = new PostAdapter(pd);
-        Optional<Post> postOptional = postService.addPost(postAdapter);
+        PostBuilder postBuilder = new PostBuilder(pd);
+        Optional<Post> postOptional = postService.addPost(postBuilder.getPost());
         Long id = postOptional.map(AbstractModel::getId).orElseThrow(NullPointerException::new);
         return ResponseEntity.ok(id);
     }

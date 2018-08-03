@@ -118,7 +118,7 @@ buildNumber.properties
 
 # Avoid ignoring Maven wrapper jar file (.jar files are usually ignored)
 !/.mvn/wrapper/maven-wrapper.jar
-/waffle-api-blog/src/main/resources/application-*
+/waffle-api-blog/src/main/resources/application-prod*
 
 #
 /.vscode/

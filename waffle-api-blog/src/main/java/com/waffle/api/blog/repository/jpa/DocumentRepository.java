@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
  * @author yuexin
  */
 @Repository
-public interface FileMetaInfoRepository extends BaseRepository<Document, Long> {
+public interface DocumentRepository extends BaseRepository<Document, Long> {
 }

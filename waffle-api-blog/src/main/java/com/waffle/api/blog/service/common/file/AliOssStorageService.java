@@ -4,6 +4,8 @@ import com.aliyun.oss.model.PutObjectResult;
 import com.waffle.api.blog.config.ApplicationProperties;
 import com.waffle.component.util.aliyun.AliyunOSS;
 
+import java.io.InputStream;
+
 /**
  * @author yuexin
  */
@@ -20,11 +22,9 @@ public class AliOssStorageService implements FileStorage {
     }
 
     @Override
-    public FileStorageInfo storeFile(ResolvedFile resolvedFile) {
-        PutObjectResult result = aliyunOss.putStream(applicationProperties.getAliOss().getBucket(), resolvedFile.getFileName(), resolvedFile.getFileStream());
-        DefaultFileStorageInfo storageInfo = new DefaultFileStorageInfo();
-        //TODO
-
+    public StorageFile storeFile(String name, InputStream inputStream) {
+        PutObjectResult result = aliyunOss.putStream(applicationProperties.getAliOss().getBucket(), name, inputStream);
+        AliYunOssStorageFile storageInfo = new AliYunOssStorageFile();
         return storageInfo;
     }
 

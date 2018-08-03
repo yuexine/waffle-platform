@@ -1,43 +1,18 @@
-eureka:
-  instance:
-    prefer-ip-address: true
-  client:
-    serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
-    enabled: false
 spring:
   application:
     name: waffle-api-blog
   profiles:
-    active: prod
+    active: prod, cloud
   jpa:
     hibernate:
       ddl-auto: none
     show-sql: true
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
 server:
   port: 8081
-ribbon:
-  ReadTimeout: 10000
-  ConnectTimeout: 10000
-  OkToRetryOnAllOperations: false
-feign:
-  hystrix:
-    enabled: true
-  okhttp:
-    enabled: true
-  client:
-    config:
-      feignName:
-        connectTimeout: 10000
-        readTimeout: 10000
-        loggerLevel: full
-hystrix:
-  command:
-    default:
-      execution:
-        isolation:
-          thread:
-            timeoutInMilliseconds:  10000
 
 management:
   endpoints:

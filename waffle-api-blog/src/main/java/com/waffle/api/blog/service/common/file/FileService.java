@@ -1,6 +1,7 @@
 package com.waffle.api.blog.service.common.file;
 
-import com.waffle.api.blog.web.model.FileDescription;
+import com.waffle.api.blog.model.Document;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 
@@ -9,5 +10,12 @@ import java.io.IOException;
  */
 public interface FileService {
 
-    FileDescription uploadFile(ResolvedFile resolvedFile) throws IOException;
+    /**
+     * 保存文件
+     *
+     * @param file
+     * @return
+     * @throws IOException
+     */
+    Document saveFile(MultipartFile file) throws IOException;
 }

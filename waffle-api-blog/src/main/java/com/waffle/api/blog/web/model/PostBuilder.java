@@ -20,18 +20,18 @@ import java.util.stream.Collectors;
  */
 @Getter
 @Setter
-public class PostAdapter extends Post {
+public class PostBuilder {
 
-    private static final long serialVersionUID = 1048467501709852576L;
+    private Post post = new Post();
 
-    public PostAdapter(PostDescription pd) {
-        setKeywords(pd.getKeywords());
-        setTitle(pd.getTitle());
-        setContext(pd.getContext());
-        setDocument(new Document(pd.getDocument()));
-        setRecommend(false);
-        setAuthor(pd.getAuthor());
-        setTags(splitKeywords(pd.getKeywords()));
+    public PostBuilder(PostDescription pd) {
+        post.setKeywords(pd.getKeywords());
+        post.setTitle(pd.getTitle());
+        post.setContext(pd.getContext());
+        post.setDocument(new Document(pd.getDocument()));
+        post.setRecommend(false);
+        post.setAuthor(pd.getAuthor());
+        post.setTags(splitKeywords(pd.getKeywords()));
     }
 
     private Set<Tag> splitKeywords(String keywords) {
