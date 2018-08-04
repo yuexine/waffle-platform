@@ -29,7 +29,8 @@ public class FileServiceImpl implements FileService {
 
     @Override
     public Document saveFile(MultipartFile file) throws IOException {
-        StorageFile storageFile = fileStorage.storeFile(file.getName(), file.getInputStream());
+        String destName = fileStorage.createDestFileName(file.getOriginalFilename());
+        StorageFile storageFile = fileStorage.storeFile(destName, file.getInputStream());
         if (storageFile.saved()) {
             Document document = buildDocument(file.getOriginalFilename(), file.getSize(), FileType.PDF, storageFile);
             return documentRepository.save(document);
@@ -43,7 +44,7 @@ public class FileServiceImpl implements FileService {
         document.setName(name);
         document.setSize(size);
         document.setType(fileType);
-        document.setRelativePosition(storageFile.getRelativePostion());
+        document.setRelativePosition(storageFile.getRelativePosition());
         document.setDestType(storageFile.getDestType());
         document.setTemporary(true);
         return document;

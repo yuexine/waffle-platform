@@ -11,7 +11,7 @@ public interface StorageFile {
 
     Boolean saved();
 
-    String getRelativePostion();
+    String getRelativePosition();
 
     DestType getDestType();
 }

@@ -13,4 +13,14 @@ public class LocalStorageService implements FileStorage {
     public StorageFile storeFile(String name, InputStream inputStream) {
         return null;
     }
+
+    @Override
+    public StorageFile createFile(String key, String destName) {
+        return null;
+    }
+
+    @Override
+    public String createDestFileName(String originalFilename) {
+        return null;
+    }
 }

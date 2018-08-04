@@ -14,7 +14,8 @@ public class ApplicationProperties {
 
     private DataSourceProp dataSource = new DataSourceProp();
 
-    private AliOSSProp aliOss = new AliOSSProp();
+    private AliOssProp aliOss = new AliOssProp();
+
 
     @Data
     public static class DataSourceProp {
@@ -29,7 +30,7 @@ public class ApplicationProperties {
     }
 
     @Data
-    public class AliOSSProp {
+    public class AliOssProp {
 
         private String endpoint;
 
@@ -38,5 +39,7 @@ public class ApplicationProperties {
         private String accessKeySecret;
 
         private String bucket;
+
+        private String postRootDir = "post";
     }
 }
