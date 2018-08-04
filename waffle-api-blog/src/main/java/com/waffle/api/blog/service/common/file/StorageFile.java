@@ -7,7 +7,7 @@ import com.waffle.api.blog.model.support.DestType;
  */
 public interface StorageFile {
 
-    String getKey();
+    String getTag();
 
     Boolean saved();
 

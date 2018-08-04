@@ -4,7 +4,9 @@ import com.aliyun.oss.model.PutObjectResult;
 import com.waffle.api.blog.config.ApplicationProperties;
 import com.waffle.component.util.aliyun.AliYunOssUtil;
 import com.waffle.component.util.common.DateFormatUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FilenameUtils;
+import org.springframework.beans.factory.DisposableBean;
 
 import java.io.InputStream;
 import java.util.Date;
@@ -14,7 +16,8 @@ import java.util.UUID;
 /**
  * @author yuexin
  */
-public class AliOssStorageService implements FileStorage {
+@Slf4j
+public class AliOssStorageService implements FileStorage, DisposableBean {
 
     private AliYunOssUtil aliyunOssUtil;
 
@@ -33,8 +36,8 @@ public class AliOssStorageService implements FileStorage {
     }
 
     @Override
-    public StorageFile createFile(String key, String destName) {
-        return new AliYunOssStorageFile(key, true, destName);
+    public StorageFile createFile(String tag, String destName) {
+        return new AliYunOssStorageFile(tag, true, destName);
     }
 
     @Override
@@ -47,4 +50,9 @@ public class AliOssStorageService implements FileStorage {
         return builder.toString();
     }
 
+    @Override
+    public void destroy() throws Exception {
+        log.info("AliYun oss client shutdown.");
+        aliyunOssUtil.closeOssClient();
+    }
 }

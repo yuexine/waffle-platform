@@ -36,4 +36,8 @@ public class AliYunOssUtil {
     public OSSClient getOssClient() {
         return ossClient;
     }
+
+    public void closeOssClient() {
+        ossClient.shutdown();
+    }
 }
