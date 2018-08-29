@@ -1,0 +1,26 @@
+.popular-post {
+  .line {
+    height: 2px;
+    width: 100px;
+    display: block;
+    border-top: 2px grey solid;
+    margin: 10px auto;
+  }
+  .card-content {
+    margin: 0 15%;
+    img {
+      max-height: 150px;
+      object-fit: cover;
+    }
+    .icon-content {
+      color: grey;
+      mat-icon, span {
+        line-height: 30px;
+        vertical-align: middle;
+        padding: 6px;
+      }
+    }
+      
+  }
+  
+}

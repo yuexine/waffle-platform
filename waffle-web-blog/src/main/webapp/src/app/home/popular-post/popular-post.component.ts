@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatIconRegistry } from '@angular/material/icon';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-popular-post',
@@ -7,7 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PopularPostComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    iconRegistry: MatIconRegistry,
+     sanitizer: DomSanitizer
+  ) {
+    iconRegistry.addSvgIcon(
+    'forward',
+    sanitizer.bypassSecurityTrustResourceUrl('assets/img/forward.svg'));
+    iconRegistry.addSvgIcon(
+    'view',
+    sanitizer.bypassSecurityTrustResourceUrl('assets/img/view.svg'));
+    iconRegistry.addSvgIcon(
+    'comment',
+    sanitizer.bypassSecurityTrustResourceUrl('assets/img/comment.svg'));
+  }
 
   ngOnInit() {
   }
