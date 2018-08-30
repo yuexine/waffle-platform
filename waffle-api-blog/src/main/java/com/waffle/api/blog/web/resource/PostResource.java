@@ -72,7 +72,7 @@ public class PostResource {
      *
      * @return
      */
-    @GetMapping(path = "post/index")
+    @GetMapping(path = "index")
     public PostIndex getIndex() {
         List<PostWrapper> recommend = postService.findRecommendPost(2);
         List<PostWrapper> popular = postService.findPopularPost(3);

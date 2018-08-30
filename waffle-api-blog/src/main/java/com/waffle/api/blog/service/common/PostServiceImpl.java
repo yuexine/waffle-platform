@@ -1,5 +1,6 @@
 package com.waffle.api.blog.service.common;
 
+import com.google.common.collect.Lists;
 import com.waffle.api.blog.model.Post;
 import com.waffle.api.blog.model.Tag;
 import com.waffle.api.blog.model.support.PostStatus;
@@ -13,6 +14,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -41,7 +43,7 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public Page<Post> searchPostByCondition(PostSearch postCondition) {
-
+        //use elastic as default search engine
         return null;
     }
 
@@ -53,7 +55,7 @@ public class PostServiceImpl implements PostService {
         post.setStatus(PostStatus.PUBLISHED);
         post.setPostType(PostType.PDF);
 
-        post.setTags(postProcessDefaultTags(post.getTags()));
+        post.setTags(postProcessTags(post.getTags()));
 
         post = postRepository.save(post);
         log.info("new post id is:{}", post.getId());
@@ -72,20 +74,33 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public List<PostWrapper> findRecommendPost(int count) {
-        return null;
+        PostWrapper postWrapper = new PostWrapper();
+        postWrapper.setId(0L);
+        postWrapper.setTitle("从2.4万篇文章中挑出的最棒的 JavaScript 学习指南（2018版)");
+        postWrapper.setSummary("服务端需要经过socket、bind、accept、read、write等步骤，客户端需要经过socket、connect、read、write等步骤，后续此系列文章会对每一个步骤如何发生进行分析。");
+        postWrapper.setKeywords("Webpack 性能 基础概念 函数式编程 面试");
+        postWrapper.setImageUrls(Lists.newArrayList("https://user-gold-cdn.xitu.io/2018/1/25/1612d81cbe0eefc0?imageView2/1/w/800/h/600/q/85/format/webp/interlace/1"));
+        postWrapper.setContent("");
+        postWrapper.setCreatedTime("2018-08-08 12:12:12");
+        postWrapper.setUpdatedTime("2018-08-08 12:12:12");
+
+        List<PostWrapper> wrappers = new ArrayList<>();
+        wrappers.add(postWrapper);
+
+        return wrappers;
     }
 
     @Override
     public List<PostWrapper> findPopularPost(int count) {
-        return null;
+        return findRecommendPost(0);
     }
 
     @Override
     public List<PostWrapper> findLatestPost(int count) {
-        return null;
+        return findRecommendPost(0);
     }
 
-    private Set<Tag> postProcessDefaultTags(Set<Tag> tags) {
+    private Set<Tag> postProcessTags(Set<Tag> tags) {
         return tags.stream().map(tag -> {
             Optional<Tag> optionalTag = tagRepository.findByName(tag.getName());
             return optionalTag.orElseGet(() -> tagRepository.save(new Tag(tag.getName())));

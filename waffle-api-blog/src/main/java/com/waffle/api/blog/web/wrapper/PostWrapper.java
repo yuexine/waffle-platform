@@ -6,7 +6,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -31,12 +30,15 @@ public class PostWrapper implements Wrapper, Ordered, Serializable {
 
     private String content;
 
-    private Date createdTime;
+    private String createdTime;
 
-    private Date updatedTime;
+    private String updatedTime;
 
     @JsonIgnore
     private Post post;
+
+    public PostWrapper() {
+    }
 
     public PostWrapper(Post post) {
         this.post = post;

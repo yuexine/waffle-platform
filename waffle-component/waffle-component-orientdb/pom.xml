@@ -3,22 +3,13 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>waffle-platform</artifactId>
+        <artifactId>waffle-component</artifactId>
         <groupId>com.waffle.platform</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>waffle-component</artifactId>
-    <packaging>pom</packaging>
-
-    <modules>
-        <module>waffle-component-utils</module>
-        <module>waffle-component-redis</module>
-        <module>waffle-component-kafka</module>
-        <module>waffle-component-hbase</module>
-        <module>waffle-component-orientdb</module>
-    </modules>
+    <artifactId>waffle-component-orientdb</artifactId>
 
 
 </project>
