@@ -1,3 +1,5 @@
+import { RouterModule } from '@angular/router';
+import { PostModule } from './post/post.module';
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 
@@ -5,19 +7,19 @@ import {AppComponent} from './app.component';
 import {FormsModule} from '@angular/forms';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-// import { HomeComponent } from './home/home.component';
 import { NavComponent } from './common/nav/nav.component';
+import { FooterComponent } from './common/footer/footer.component';
 
 import { AppRoutingModule } from './app-routing.module';
-import { HomeModule } from './home/home.module';
 
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { HttpClientModule } from '@angular/common/http';
+import { HomeModule } from './home/home.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    // HomeComponent,
+    FooterComponent,
     NavComponent,
   ],
   imports: [
@@ -26,8 +28,10 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     MatToolbarModule,
     AppRoutingModule,
+    HttpClientModule,
     HomeModule,
-    HttpClientModule
+    PostModule,
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]
