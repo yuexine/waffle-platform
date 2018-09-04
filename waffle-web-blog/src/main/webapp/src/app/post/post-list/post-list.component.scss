@@ -1,0 +1,42 @@
+.view-mode{
+  display: inline-block;
+  float: right;
+  padding-top: 15px;
+}
+
+.pic-list {
+  .pic-list-item {
+    // padding: 20px 0;
+    height: 200px;
+    .mat-card { width: 100%;}
+    .post-card{
+      img {
+        height: 150px;
+        width: 150px;
+        object-fit: cover;
+        float: left;
+        display: inline-block;
+        margin-right: 20px;
+      }
+      .item-content {
+        padding: 20px;
+        .date {
+          position: absolute;
+          left: 80% ;
+          top: 40px;
+        }
+        .introduction {
+          padding-top: 20px;
+        }
+        .item-tag {
+          position: absolute;
+          left: 200px;
+          bottom: 40px;
+          span {
+            padding: 0 10px;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+
+<button mat-button class="new-post" (click)="goToNewPost()">New Post</button>
+<mat-tab-group dynamicHeight>
+  <mat-tab label="Search">
+    <div class="search">
+      <form class="example-form">
+
+        <mat-form-field class="example-full-width">
+          <input type="text" matInput placeholder="Search">
+          <mat-icon matSuffix svgIcon="search"></mat-icon>
+        </mat-form-field>
+        
+      </form>
+    </div>
+  </mat-tab>
+  <mat-tab label="Label">
+    <div class="label">
+      <mat-chip-list>
+        <mat-chip>JavaScript</mat-chip>
+        <mat-chip>HTML</mat-chip>
+        <mat-chip>CSS</mat-chip>
+      </mat-chip-list>
+    </div>
+  </mat-tab>
+</mat-tab-group>
+

@@ -11,7 +11,7 @@ export class PopularPostComponent implements OnInit {
 
   constructor(
     iconRegistry: MatIconRegistry,
-     sanitizer: DomSanitizer
+    sanitizer: DomSanitizer
   ) {
     iconRegistry.addSvgIcon(
     'forward',

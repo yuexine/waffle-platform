@@ -1,0 +1,100 @@
+<mat-form-field>
+  <mat-select [(value)]="selected">
+    <mat-option value="option1">最新发布</mat-option>
+    <mat-option value="option3">按热度</mat-option>
+    <mat-option value="option2">按热度</mat-option>
+  </mat-select>
+</mat-form-field>
+<div class="view-mode">
+  <!-- <span>查看方式</span> -->
+  <mat-button-toggle-group #group="matButtonToggleGroup">
+    <mat-button-toggle value="list">
+      <!-- <mat-icon>format_align_left</mat-icon> -->
+      <span>按列表展示</span>
+    </mat-button-toggle>
+    <mat-button-toggle value="pic">
+      <span>按缩略图展示</span>
+    </mat-button-toggle>
+  </mat-button-toggle-group>
+</div>
+
+<mat-list>
+  <mat-list-item>
+    <div>post.tag</div>
+    <div mat-line>post.name</div>
+    <p mat-line> post.date</p>
+  </mat-list-item>
+  <mat-list-item>
+    <div>post.tag</div>
+    <div mat-line>post.name</div>
+    <p mat-line> post.date</p>
+  </mat-list-item>
+  <mat-list-item>
+    <div>post.tag</div>
+    <div mat-line>post.name</div>
+    <p mat-line> post.date</p>
+  </mat-list-item>
+</mat-list>
+
+<mat-list class="pic-list">
+  <mat-list-item class="pic-list-item">
+    <mat-card class="post-card">
+      <mat-card-content>
+        <img src="../../../assets/img/pic.jpg">
+        <div class="item-content">
+          <h2>title</h2>
+          <span class="date">date</span>
+          <p class="introduction">
+            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+            A small...
+          </p>
+          <div class="item-tag">
+            <span>tag1</span>
+            <span>tag2</span>
+            <span>tag3</span>
+          </div>
+        </div>        
+      </mat-card-content>
+    </mat-card>
+  </mat-list-item>
+  <mat-list-item class="pic-list-item">
+    <mat-card class="post-card">
+      <mat-card-content>
+        <img src="../../../assets/img/pic.jpg">
+        <div class="item-content">
+          <h2>title</h2>
+          <span class="date">date</span>
+          <p class="introduction">
+            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+            A small...
+          </p>
+          <div class="item-tag">
+            <span>tag1</span>
+            <span>tag2</span>
+            <span>tag3</span>
+          </div>
+        </div>        
+      </mat-card-content>
+    </mat-card>
+  </mat-list-item>
+  <mat-list-item class="pic-list-item">
+    <mat-card class="post-card">
+      <mat-card-content>
+        <img src="../../../assets/img/pic.jpg">
+        <div class="item-content">
+          <h2>title</h2>
+          <span class="date">date</span>
+          <p class="introduction">
+            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+            A small...
+          </p>
+          <div class="item-tag">
+            <span>tag1</span>
+            <span>tag2</span>
+            <span>tag3</span>
+          </div>
+        </div>        
+      </mat-card-content>
+    </mat-card>
+  </mat-list-item>
+</mat-list>

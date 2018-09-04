@@ -1,3 +1,4 @@
+import { NewPostModule } from './new-post/new-post.module';
 import { RouterModule } from '@angular/router';
 import { PostModule } from './post/post.module';
 import {BrowserModule} from '@angular/platform-browser';
@@ -15,6 +16,7 @@ import { AppRoutingModule } from './app-routing.module';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeModule } from './home/home.module';
+import { NewPostComponent } from './new-post/new-post.component';
 
 @NgModule({
   declarations: [
@@ -24,14 +26,14 @@ import { HomeModule } from './home/home.module';
   ],
   imports: [
     BrowserModule,
-    FormsModule,
+    AppRoutingModule,
     BrowserAnimationsModule,
     MatToolbarModule,
-    AppRoutingModule,
+    FormsModule,
     HttpClientModule,
     HomeModule,
     PostModule,
-    RouterModule
+    NewPostModule
   ],
   providers: [],
   bootstrap: [AppComponent]

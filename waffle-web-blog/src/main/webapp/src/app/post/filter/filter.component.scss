@@ -1,0 +1,23 @@
+.new-post {
+  position: relative;
+  left: 100%;
+  margin: 20px 0;
+}
+.search {
+  height: 200px;
+  padding-top: 100px;
+  .example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+}
+
+.label {
+  padding: 50px;;
+}
